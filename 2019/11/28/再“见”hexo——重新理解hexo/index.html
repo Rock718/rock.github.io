@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          再“见”hexo——重新理解hexo - null
+        
+    </title>
+
+    <link rel="canonical" href="https://rock718.github.io.git/2019/11/28/再“见”hexo——重新理解hexo/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+    
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                            
+                        </div>
+                        <h1>再“见”hexo——重新理解hexo</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Rock on
+                            2019-11-28
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Rock&#39;s blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">Homepage</a>
+                    </li>
+		    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="再“见”hexo——重新理解hexo"><a href="#再“见”hexo——重新理解hexo" class="headerlink" title="再“见”hexo——重新理解hexo"></a>再“见”hexo——重新理解hexo</h1><h3 id="从两年前初次接触hexo，到工作之后再次拾起hexo并解决了一些坑。我想重新再梳理一下hexo的用法和安装中的坑。"><a href="#从两年前初次接触hexo，到工作之后再次拾起hexo并解决了一些坑。我想重新再梳理一下hexo的用法和安装中的坑。" class="headerlink" title="从两年前初次接触hexo，到工作之后再次拾起hexo并解决了一些坑。我想重新再梳理一下hexo的用法和安装中的坑。"></a><em>从两年前初次接触hexo，到工作之后再次拾起hexo并解决了一些坑。我想重新再梳理一下hexo的用法和安装中的坑。</em></h3><h2 id="1-Node-js-npm-hexo他们是什么关系？"><a href="#1-Node-js-npm-hexo他们是什么关系？" class="headerlink" title="1.Node.js npm hexo他们是什么关系？"></a>1.Node.js npm hexo他们是什么关系？</h2><h3 id="1-Nodejs"><a href="#1-Nodejs" class="headerlink" title="(1)Nodejs"></a>(1)Nodejs</h3><h4 id="官方解释：Node-js-是一个基于-Chrome-V8-引擎的-JavaScript-运行时。"><a href="#官方解释：Node-js-是一个基于-Chrome-V8-引擎的-JavaScript-运行时。" class="headerlink" title="官方解释：Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时。"></a>官方解释：Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时。</h4><h4 id="简单的说-Node-js-就是运行在服务端的-JavaScript。"><a href="#简单的说-Node-js-就是运行在服务端的-JavaScript。" class="headerlink" title="简单的说 Node.js 就是运行在服务端的 JavaScript。"></a>简单的说 Node.js 就是运行在服务端的 JavaScript。</h4><h4 id="我目前的理解是，对于hexo来说，Node-js是将hexo的markdown文本编写成html等文件的编译器。"><a href="#我目前的理解是，对于hexo来说，Node-js是将hexo的markdown文本编写成html等文件的编译器。" class="headerlink" title="我目前的理解是，对于hexo来说，Node.js是将hexo的markdown文本编写成html等文件的编译器。"></a>我目前的理解是，对于hexo来说，Node.js是将hexo的markdown文本编写成html等文件的编译器。</h4><h3 id="2-npm"><a href="#2-npm" class="headerlink" title="(2)npm"></a>(2)npm</h3><h4 id="npm-是-JavaScript-世界的包管理工具。"><a href="#npm-是-JavaScript-世界的包管理工具。" class="headerlink" title="npm 是 JavaScript 世界的包管理工具。"></a>npm 是 JavaScript 世界的包管理工具。</h4><h4 id="我的理解，npm是用于安装各种第三方JavaScript模块的软件管理器。类似于Ubuntu-Debian系统中的apt包管理器或者是CentOS系统中的yum。"><a href="#我的理解，npm是用于安装各种第三方JavaScript模块的软件管理器。类似于Ubuntu-Debian系统中的apt包管理器或者是CentOS系统中的yum。" class="headerlink" title="我的理解，npm是用于安装各种第三方JavaScript模块的软件管理器。类似于Ubuntu/Debian系统中的apt包管理器或者是CentOS系统中的yum。"></a>我的理解，npm是用于安装各种第三方JavaScript模块的软件管理器。类似于Ubuntu/Debian系统中的apt包管理器或者是CentOS系统中的yum。</h4><h3 id="3-hexo"><a href="#3-hexo" class="headerlink" title="(3)hexo"></a>(3)hexo</h3><h4 id="官方解释：Hexo-是一个快速、简洁且高效的博客框架。Hexo-使用-Markdown-或其他渲染引擎-解析文章，在几秒内，即可利用靓丽的主题生成静态网页。"><a href="#官方解释：Hexo-是一个快速、简洁且高效的博客框架。Hexo-使用-Markdown-或其他渲染引擎-解析文章，在几秒内，即可利用靓丽的主题生成静态网页。" class="headerlink" title="官方解释：Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown(或其他渲染引擎)解析文章，在几秒内，即可利用靓丽的主题生成静态网页。"></a>官方解释：Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown(或其他渲染引擎)解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</h4><h4 id="我的简单理解：hexo可以让你用Markdown编写静态博客。"><a href="#我的简单理解：hexo可以让你用Markdown编写静态博客。" class="headerlink" title="我的简单理解：hexo可以让你用Markdown编写静态博客。"></a>我的简单理解：hexo可以让你用Markdown编写静态博客。</h4><h2 id="2-如何安装hexo"><a href="#2-如何安装hexo" class="headerlink" title="2.如何安装hexo"></a>2.如何安装hexo</h2><h3 id="1-构建本地博客源码仓库"><a href="#1-构建本地博客源码仓库" class="headerlink" title="(1)构建本地博客源码仓库"></a>(1)构建本地博客源码仓库</h3><h4 id="最佳方案，你需要参考hexo官网的安装教程。我的经验是不同的操作系统安装方法不一样，请务必尽量遵循官网的安装建议，否则不一定哪里会出现问题。"><a href="#最佳方案，你需要参考hexo官网的安装教程。我的经验是不同的操作系统安装方法不一样，请务必尽量遵循官网的安装建议，否则不一定哪里会出现问题。" class="headerlink" title="最佳方案，你需要参考hexo官网的安装教程。我的经验是不同的操作系统安装方法不一样，请务必尽量遵循官网的安装建议，否则不一定哪里会出现问题。"></a>最佳方案，你需要参考<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">hexo官网的安装教程</a>。我的经验是不同的操作系统安装方法不一样，请务必尽量遵循官网的安装建议，否则不一定哪里会出现问题。</h4><h3 id="2-生成远程博客托管仓库"><a href="#2-生成远程博客托管仓库" class="headerlink" title="(2)生成远程博客托管仓库"></a>(2)生成远程博客托管仓库</h3><h4 id="你可以选择托管到github或coding上或者是你自己的主机上，这一点网上的许多教程都有说过，这里不再赘述。"><a href="#你可以选择托管到github或coding上或者是你自己的主机上，这一点网上的许多教程都有说过，这里不再赘述。" class="headerlink" title="你可以选择托管到github或coding上或者是你自己的主机上，这一点网上的许多教程都有说过，这里不再赘述。"></a>你可以选择托管到github或coding上或者是你自己的主机上，这一点网上的许多教程都有说过，这里不再赘述。</h4><h2 id="3-一些坑"><a href="#3-一些坑" class="headerlink" title="3.一些坑"></a>3.一些坑</h2><h3 id="1-如果你发现hexo生成文件后无法开启本地模拟服务器，即hexo-s无法识别且hexo的帮助中没有server指令。那么你可能没有安装hexo-server。Hexo-3-0-把服务器独立成了个别模块，你必须先安装hexo-server才能使用。"><a href="#1-如果你发现hexo生成文件后无法开启本地模拟服务器，即hexo-s无法识别且hexo的帮助中没有server指令。那么你可能没有安装hexo-server。Hexo-3-0-把服务器独立成了个别模块，你必须先安装hexo-server才能使用。" class="headerlink" title="(1)如果你发现hexo生成文件后无法开启本地模拟服务器，即hexo s无法识别且hexo的帮助中没有server指令。那么你可能没有安装hexo-server。Hexo 3.0 把服务器独立成了个别模块，你必须先安装hexo-server才能使用。"></a>(1)如果你发现hexo生成文件后无法开启本地模拟服务器，即<code>hexo s</code>无法识别且hexo的帮助中没有server指令。那么你可能没有安装<code>hexo-server</code>。Hexo 3.0 把服务器独立成了个别模块，你必须先安装<code>hexo-server</code>才能使用。</h3><pre><code>$ npm install hexo-server --save</code></pre><h3 id="安装完成后，输入以下命令以启动服务器，你的网站会在http-localhost-4000下启动。"><a href="#安装完成后，输入以下命令以启动服务器，你的网站会在http-localhost-4000下启动。" class="headerlink" title="安装完成后，输入以下命令以启动服务器，你的网站会在http://localhost:4000下启动。"></a>安装完成后，输入以下命令以启动服务器，你的网站会在<code>http://localhost:4000</code>下启动。</h3><pre><code>$ hexo server</code></pre><h3 id="如果你想要更改端口，或是在执行时遇到了EADDRINUSE错误，可以在执行时使用-p选项指定其他端口，如下："><a href="#如果你想要更改端口，或是在执行时遇到了EADDRINUSE错误，可以在执行时使用-p选项指定其他端口，如下：" class="headerlink" title="如果你想要更改端口，或是在执行时遇到了EADDRINUSE错误，可以在执行时使用-p选项指定其他端口，如下："></a>如果你想要更改端口，或是在执行时遇到了<code>EADDRINUSE</code>错误，可以在执行时使用<code>-p</code>选项指定其他端口，如下：</h3><pre><code>$ hexo server -p 5000</code></pre><h3 id="2-在输入hexo-deploy后，hexo报如下错误："><a href="#2-在输入hexo-deploy后，hexo报如下错误：" class="headerlink" title="(2)在输入hexo deploy后，hexo报如下错误："></a>(2)在输入<code>hexo deploy</code>后，hexo报如下错误：</h3><pre><code>ERROR Deployer not found: git</code></pre><h3 id="这是由于你没有安装hexo-deployer，执行以下命令来进行安装："><a href="#这是由于你没有安装hexo-deployer，执行以下命令来进行安装：" class="headerlink" title="这是由于你没有安装hexo-deployer，执行以下命令来进行安装："></a>这是由于你没有安装<code>hexo-deployer</code>，执行以下命令来进行安装：</h3><pre><code>$ npm install hexo-deployer-git --save</code></pre><h3 id="3-在在输入hexo-deploy后，hexo提示："><a href="#3-在在输入hexo-deploy后，hexo提示：" class="headerlink" title="(3)在在输入hexo deploy后，hexo提示："></a>(3)在在输入<code>hexo deploy</code>后，hexo提示：</h3><pre><code>You should configure deployment settings in _config.yml first!</code></pre><h3 id="查看一下你的hexo根目录下的-config-yml中deploy：的配置是否正确。应类似于以下内容："><a href="#查看一下你的hexo根目录下的-config-yml中deploy：的配置是否正确。应类似于以下内容：" class="headerlink" title="查看一下你的hexo根目录下的_config.yml中deploy：的配置是否正确。应类似于以下内容："></a>查看一下你的hexo根目录下的<code>_config.yml</code>中<code>deploy：</code>的配置是否正确。应类似于以下内容：</h3><pre><code>deploy:
+type: git
+repo: git@github.com:Rock718/rock718.github.io.git</code></pre><h3 id="注意：这里的type-和repo-后面至少应该有一个空格。如果你有多个repo-，样子应该类似这样："><a href="#注意：这里的type-和repo-后面至少应该有一个空格。如果你有多个repo-，样子应该类似这样：" class="headerlink" title="注意：这里的type:和repo:后面至少应该有一个空格。如果你有多个repo:，样子应该类似这样："></a>注意：这里的<code>type:</code>和<code>repo:</code>后面至少应该有一个空格。如果你有多个<code>repo:</code>，样子应该类似这样：</h3><pre><code>deploy:
+type: git
+repo:
+      github: git@github.com:Rock718/rock718.github.io.git
+      coding: git@coding.com:**********</code></pre><h3 id="一定要注意缩进的问题"><a href="#一定要注意缩进的问题" class="headerlink" title="一定要注意缩进的问题"></a>一定要注意缩进的问题</h3><h3 id="4-如果你想在hexo中插入图片，建议参考官网的推荐，使用形如："><a href="#4-如果你想在hexo中插入图片，建议参考官网的推荐，使用形如：" class="headerlink" title="(4)如果你想在hexo中插入图片，建议参考官网的推荐，使用形如："></a>(4)如果你想在hexo中插入图片，建议参考<a href="https://hexo.io/zh-cn/docs/asset-folders" target="_blank" rel="noopener">官网的推荐</a>，使用形如：</h3><pre><code>{% asset_img example.jpg This is an example image %}</code></pre><h3 id="当然，在这之前你需要配置hexo根目录下的-config-yml中post-asset-folder-为true"><a href="#当然，在这之前你需要配置hexo根目录下的-config-yml中post-asset-folder-为true" class="headerlink" title="当然，在这之前你需要配置hexo根目录下的_config.yml中post_asset_folder:为true"></a>当然，在这之前你需要配置hexo根目录下的<code>_config.yml</code>中<code>post_asset_folder:</code>为<code>true</code></h3>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/11/25/writeup-“百度杯”CTF比赛-九月场-SQLi/" data-toggle="tooltip" data-placement="top" title="writeup-“百度杯”CTF比赛-九月场-SQLi">Next post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">Tags</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Rock718">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Rock 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io" target="_blank" rel="noopener">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace" target="_blank" rel="noopener">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+	<script src="/js/particles.js"></script>
+	<script src="/js/particles_config.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://rock718.github.io.git/2019/11/28/%E5%86%8D%E2%80%9C%E8%A7%81%E2%80%9Dhexo%E2%80%94%E2%80%94%E9%87%8D%E6%96%B0%E7%90%86%E8%A7%A3hexo/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://rock718.github.io.git/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
