@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>google xss-game 题目解答 | Rock&#39;s blog</title>
-  <meta name="keywords" content=" xss ">
-  <meta name="description" content="google xss-game 题目解答 | Rock&#39;s blog">
+  <title>xctf-misc-wp | Rock&#39;s blog</title>
+  <meta name="keywords" content=" ctf , misc , writeup , xctf ">
+  <meta name="description" content="xctf-misc-wp | Rock&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1.low 通过python提取图像的最低有效位组合成图像，发现是二维码。   from PIL import Image  img = Image.open(&amp;quot;&#x2F;root&#x2F;Downloads&#x2F;low.bmp&amp;quot;) lsbImg = img.copy() pix = lsbImg.load()  width = img.width height = img.height  for">
 <meta name="keywords" content="ctf,misc,writeup,xctf">
@@ -309,9 +309,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-xss-game-writeup" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-xctf-misc-wp" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">google xss-game 题目解答</h1>
+        <h1 class="article-title">xctf-misc-wp</h1>
     
     <div class="article-meta">
         
@@ -320,14 +320,20 @@
         
         <span class="tag">
             
-            <a class="color4">xss</a>
+            <a class="color4">ctf</a>
+            
+            <a class="color5">misc</a>
+            
+            <a class="color3">writeup</a>
+            
+            <a class="color5">xctf</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2017-09-27 20:26:55'>2017-08-14 11:21</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-02 21:58:53'>2020-05-01 12:04</time>
         
     </div>
     <div class="article-meta">
@@ -349,7 +355,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-前言"><span class="toc-text">0.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-闲言少叙-书归正转"><span class="toc-text">1.闲言少叙,书归正转.</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-1-Hello-world-of-XSS"><span class="toc-text">Level 1: Hello, world of XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-2-Persistence-is-key"><span class="toc-text">Level 2: Persistence is key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-3-That-sinking-feeling…"><span class="toc-text">Level 3: That sinking feeling…</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-4-Context-matters"><span class="toc-text">Level 4: Context matters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-5-Breaking-protocol"><span class="toc-text">Level 5: Breaking protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-6-Follow-the-rabbit"><span class="toc-text">Level 6: Follow the rabbit</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-low"><span class="toc-text">1.low</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-信号不好先挂了"><span class="toc-text">2.信号不好先挂了</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Ditf"><span class="toc-text">3.Ditf</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-签到题"><span class="toc-text">4.签到题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Excaliflag"><span class="toc-text">5.Excaliflag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Avatar"><span class="toc-text">6.Avatar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Miscellaneous-200"><span class="toc-text">7.Miscellaneous-200</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Miscellaneous-300"><span class="toc-text">8.Miscellaneous-300</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#持续更新中……"><span class="toc-text">持续更新中……</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -365,48 +371,116 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><p>在花了一个下午和晚上之后,终于做完了这六道题目,感觉还是挺有收获的.整体感觉这六道题目比较简单,难度不高.</p>
-<p>这是站点 : <a href="https://xss-game.appspot.com/" target="_blank" rel="noopener">https://xss-game.appspot.com/</a></p>
-<h2 id="1-闲言少叙-书归正转"><a href="#1-闲言少叙-书归正转" class="headerlink" title="1.闲言少叙,书归正转."></a>1.闲言少叙,书归正转.</h2><h3 id="Level-1-Hello-world-of-XSS"><a href="#Level-1-Hello-world-of-XSS" class="headerlink" title="Level 1: Hello, world of XSS"></a>Level 1: Hello, world of XSS</h3><p>入手点：<br>    level.py的第44行代码</p>
-<pre><code># Our search engine broke, we found no results :-(
-    message = &quot;Sorry, no results were found for &lt;b&gt;&quot; + query + &quot;&lt;/b&gt;.&quot;
-    message += &quot; &lt;a href=&apos;?&apos;&gt;Try again&lt;/a&gt;.&quot;</code></pre><p>思路：<br>    直接闭合 &lt;b&gt; 标签,插入js代码</p>
-<p>答案：</p>
-<pre><code>&lt;/b&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;b&gt;</code></pre><h3 id="Level-2-Persistence-is-key"><a href="#Level-2-Persistence-is-key" class="headerlink" title="Level 2: Persistence is key"></a>Level 2: Persistence is key</h3><p>入手点：<br>    index.html的第30行代码</p>
-<pre><code>html += &quot;&lt;blockquote&gt;&quot; + posts[i].message + &quot;&lt;/blockquote&quot;;</code></pre><p>思路：<br>    这道题我一开始想用上道题的套路，但显然不可以。具体为什么我还不是很明白。根据题目的提示，貌似可以利用 &lt;img&gt; 标签的onerror属性。</p>
-<p>答案：</p>
-<pre><code>&lt;img src=&quot;***&quot; onerror=&quot;alert()&quot;&gt;</code></pre><h3 id="Level-3-That-sinking-feeling…"><a href="#Level-3-That-sinking-feeling…" class="headerlink" title="Level 3: That sinking feeling…"></a>Level 3: That sinking feeling…</h3><p>入手点：<br>    index.html的第17行代码</p>
-<pre><code>html += &quot;&lt;img src=&apos;/static/level3/cloud&quot; + num + &quot;.jpg&apos; /&gt;&quot;;</code></pre><p>思路：<br>    这道题乍一看没有让用户输入的地方。通过查看代码第43行，我们知道页面会调用chooseTab函数，将url中#后面的字符串做为参数传入。我们需要构造一个字符串，使img标签加载的时候执行我们的代码。</p>
-<p>答案：</p>
-<pre><code>&apos;onerror=&quot;alert()&quot;/&gt;</code></pre><h3 id="Level-4-Context-matters"><a href="#Level-4-Context-matters" class="headerlink" title="Level 4: Context matters"></a>Level 4: Context matters</h3><p>入手点：<br>    timer.html的第21行代码</p>
-<pre><code>&lt;img src=&quot;/static/loading.gif&quot; onload=&quot;startTimer(&apos;{{ timer }}&apos;);&quot; /&gt;</code></pre><p>思路：<br>    这道题通过构造特殊的timer变量值，使得<img>标签中的js代码得以执行。</p>
-<p>答案：</p>
-<pre><code>&apos;),alert()//</code></pre><p>在做题目的时候发现自己的输入被转义成了html实体，以为无法被指执行，所以想破头也没想出来。在看了答案后才知道是能够被执行的。不过我还是不知道这是为什么？</p>
-<img src="../../../../images/2017/08/level4.jpg">
+        <h1 id="1-low"><a href="#1-low" class="headerlink" title="1.low"></a>1.low</h1><img src="/2020/05/01/xctf-misc-wp/low.bmp" class="">
+<p>通过python提取图像的最低有效位组合成图像，发现是二维码。</p>
+<img src="/2020/05/01/xctf-misc-wp/low1.bmp" class="">
 
-<h3 id="Level-5-Breaking-protocol"><a href="#Level-5-Breaking-protocol" class="headerlink" title="Level 5: Breaking protocol"></a>Level 5: Breaking protocol</h3><p>入手点：<br>    signup.html的第15行代码</p>
-<pre><code>&lt;a href=&quot;{{ next }}&quot;&gt;Next &gt;&gt;&lt;/a&gt;</code></pre><p>思路：<br>    通过查看代码，三个html都是很简单的页面，只有signup.html调用了next变量，并放到了 &lt;a&gt; 标签中，我不禁想到利用其执行js代码。再通过读level.py我了解到当页面的url参数带有”signup”时，next的值为next变量获得的参数值。那么这道题目就很简单了，我们只需要利用 &lt;a&gt; 标签的url来执行代码。</p>
-<p>答案：</p>
-<pre><code>javascript:alert()</code></pre><img src="../../../../images/2017/08/level5.jpg">
+<pre><code>from PIL import Image
 
-<h3 id="Level-6-Follow-the-rabbit"><a href="#Level-6-Follow-the-rabbit" class="headerlink" title="Level 6: Follow the rabbit"></a>Level 6: Follow the rabbit</h3><p>入手点：<br>    index.html的第17~25行代码。</p>
-<pre><code>var scriptEl = document.createElement(&apos;script&apos;);
+img = Image.open(&quot;/root/Downloads/low.bmp&quot;)
+lsbImg = img.copy()
+pix = lsbImg.load()
 
-  // This will totally prevent us from loading evil URLs!
-  if (url.match(/^https?:\/\//)) {
-    setInnerText(document.getElementById(&quot;log&quot;),
-      &quot;Sorry, cannot load a URL containing \&quot;http\&quot;.&quot;);
-    return;
-  }</code></pre><p>思路：<br>    题目说得很清楚，利用外部js脚本执行alert()。但最大的问题是对我们给出的url做了过滤。这让我很头疼，心想难道 &lt;script&gt; 标签难道还有其他的属性可以利用？后来才了解到到题目只对小写的http和https过滤了，而url的协议与地址部分是不区分大小写的，也就是说我写成hTtPs://也是没问题的！</p>
-<p>答案：</p>
-<pre><code>HTTPS://www.rockblog.cn/test.js</code></pre><img src="../../../../images/2017/08/level6(1).jpg">
+width = img.width
+height = img.height
 
-<p>让我惊喜的是还有一种在我看来更惊艳的答案，利用了data类型的url。</p>
-<p>解决方案如下：</p>
-<pre><code>data:text,alert()</code></pre><img src="../../../../images/2017/08/level6(2).jpg">
+for w in range(width):
+    for h in range(height):
+        if pix[w,h] &amp; 0x01 == 1:
+            pix[w, h] = 0
+        else:
+            pix[w, h] = 255
+lsbImg.save(&quot;/root/Downloads/_low.bmp&quot;)</code></pre><h1 id="2-信号不好先挂了"><a href="#2-信号不好先挂了" class="headerlink" title="2.信号不好先挂了"></a>2.信号不好先挂了</h1><img src="/2020/05/01/xctf-misc-wp/apple.png" class="">
+<p>使用zsteg检测图像，发现存在lsb隐写。使用Stegsolve提取隐藏的压缩文件，解压出一张同样的png图像<code>pen.png</code>。<br>之后思路中断，查找答案后得知可以从盲水印方向考虑。<br>使用<code>BlindWaterMark</code>提取盲水印<br>    ./bwm.py decode apple.png pen.png applepen.png</p>
+<img src="/2020/05/01/xctf-misc-wp/applepen.png" class="">
+<h1 id="3-Ditf"><a href="#3-Ditf" class="headerlink" title="3.Ditf"></a>3.Ditf</h1><p>打开图像发现报CRC32校验错误，判断图像人为修改过高度。<br>尝试使用脚本爆破正确高度，未果。</p>
+<pre><code>import binascii, struct
 
-<p>在下实在是佩服！</p>
+fObj = open(&quot;/root/Downloads/e02c9de40be145dba6baa80ef1d270ba.png&quot;, &quot;rb&quot;)
+png = fObj.read()
+fObj.close()
+crcOri =int.from_bytes(png[0x1D:0x20],byteorder=&apos;big&apos;,signed=False)
+nowHeight = int.from_bytes(png[0x10:0x14],byteorder=&apos;big&apos;,signed=False)
+maxHeight = 4096
 
+for h in range(nowHeight, maxHeight):
+    data = png[0xC:0x14] + struct.pack(&quot;&gt;i&quot;,h) + png[0x18:0x1D]
+    crcNew = binascii.crc32(data)
+    if crcNew == crcOri:
+        print(h)
+        break</code></pre><p>尝试使用<code>tweakpng</code>手动修改高度，成功看到隐藏信息。</p>
+<img src="/2020/05/01/xctf-misc-wp/e02c9de40be145dba6baa80ef1d270ba.png" class="">
+<p>使用binwalk检测图像，发现隐藏rar文件，使用foremost提取。猜测密码即为隐藏信息。成功解压。<br>解压后分析流量，导出http对象，找到可疑字符串。<br>    <code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;img src=&quot;/kiss.png&quot; /&gt;
+    ZmxhZ3tPel80bmRfSGlyMF9sb3YzX0ZvcjN2ZXJ9
+    &lt;/body&gt;
+    &lt;/html&gt;</code><br>base64解码，得到flag。</p>
+<h3 id="4-签到题"><a href="#4-签到题" class="headerlink" title="4.签到题"></a>4.签到题</h3><p>base64-&gt;栅栏-&gt;凯撒</p>
+<h3 id="5-Excaliflag"><a href="#5-Excaliflag" class="headerlink" title="5.Excaliflag"></a>5.Excaliflag</h3><p>Stegsolve查看蓝色通道</p>
+<img src="/2020/05/01/xctf-misc-wp/solved.bmp" class="">
+<h3 id="6-Avatar"><a href="#6-Avatar" class="headerlink" title="6.Avatar"></a>6.Avatar</h3><p>使用<code>outguess</code>提取图像中的隐藏信息。<br><a href="https://github.com/resurrecting-open-source-projects/outguess" target="_blank" rel="noopener">https://github.com/resurrecting-open-source-projects/outguess.git</a></p>
+<pre><code>outguess -r 035bfaa85410429495786d8ea6ecd296.jpg -t hi.txt</code></pre><h3 id="7-Miscellaneous-200"><a href="#7-Miscellaneous-200" class="headerlink" title="7.Miscellaneous-200"></a>7.Miscellaneous-200</h3><p>初步判断txt文件内为61366行RGB像素值，编写脚本判断图像长宽并绘制图像。</p>
+<pre><code>from PIL import Image
+
+fObj = open(&quot;/root/Downloads/62f4ea780ecf4e6bbef5f40d674ec073.txt&quot;, &quot;r&quot;)
+pixList = []
+for line in fObj.readlines():
+    line = line[:-1:]
+    pix = line.split(&apos;,&apos;)
+    _pix = []
+    for p in pix:
+        _pix.append(int(p))
+    pixList.append(tuple(_pix))
+fObj.close()
+
+length = len(pixList)
+width = int(length ** 0.5)
+wList = []
+hList = []
+
+for w in range(3,width):
+    if length // w * w == length:
+        wList.append(w)
+        hList.append(length // w)
+
+for i in range(len(wList)):
+    img = Image.new(&quot;RGB&quot;, (wList[i], hList[i]))
+    for j in range(wList[i]):
+        for k in range(hList[i]):
+            img.putpixel((j,k), pixList[j*hList[i]+k])
+    img.save(&quot;/root/Downloads/&quot; + str(wList[i]) + &quot;*&quot; + str(hList[i]) + &quot;.png&quot;)
+
+for i in range(len(hList)):
+    img = Image.new(&quot;RGB&quot;, (hList[i], wList[i]))
+    for j in range(hList[i]):
+        for k in range(wList[i]):
+            img.putpixel((j,k), pixList[j*wList[i]+k])
+    img.save(&quot;/root/Downloads/&quot; + str(hList[i]) + &quot;*&quot; + str(wList[i]) + &quot;.png&quot;)</code></pre><p>其中得到503×122的正确图像。</p>
+<img src="/2020/05/01/xctf-misc-wp/503*122.png" class="">
+
+<p>PIL相关知识链接<br>1.<a href="https://blog.csdn.net/zhangziju/article/details/79123275" target="_blank" rel="noopener">Python图像处理PIL各模块详细介绍</a><br>2.<a href="https://blog.csdn.net/dxyna/article/details/81120311" target="_blank" rel="noopener">PIL图像处理之Image</a></p>
+<h3 id="8-Miscellaneous-300"><a href="#8-Miscellaneous-300" class="headerlink" title="8.Miscellaneous-300"></a>8.Miscellaneous-300</h3><p>发现zip压缩包内的文件名即为解压密码，编写脚本解压。</p>
+<pre><code>import zipfile
+
+filePath = &quot;/root/Downloads/zip/&quot;
+zipFileName = &quot;/root/Downloads/f932f55b83fa493ab024390071020088.zip&quot;
+
+zipFile = zipfile.ZipFile(zipFileName)
+fileName = zipFile.namelist()[0]
+zipFile.extractall(filePath, pwd=fileName.split(&quot;.&quot;)[0].encode())
+while fileName != &quot;73168.zip&quot;:
+    zipFileName = filePath + fileName
+    zipFile = zipfile.ZipFile(zipFileName)
+    fileName = zipFile.namelist()[0]
+    print(fileName)
+    zipFile.extractall(filePath, pwd=fileName.split(&quot;.&quot;)[0].encode())</code></pre><p>解压出1500多个压缩包后，解压报错，发现最新的压缩包内含mess.wav。<br>尝试爆破该压缩包，发现密码为5位。<br>用<code>Audacity</code>分析解压出的mess.wav，频谱图中含有flag。</p>
+<img src="/2020/05/01/xctf-misc-wp/Miscellaneous-300.png" class="">
+
+<h3 id="持续更新中……"><a href="#持续更新中……" class="headerlink" title="持续更新中……"></a>持续更新中……</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 luo_xiao_hei_718@163.com </span>
     </div>
@@ -415,12 +489,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>google xss-game 题目解答</p>
+    <p><span class="copy-title">文章标题:</span>xctf-misc-wp</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2017-08-14, 11:21:09</p>
-    <p><span class="copy-title">最后更新:</span>2017-09-27, 20:26:55</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2017/08/14/xss-game-writeup/" title="google xss-game 题目解答">https://rock718.github.io.git/2017/08/14/xss-game-writeup/</a>
+    <p><span class="copy-title">发布时间:</span>2020-05-01, 12:04:30</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-02, 21:58:53</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/05/01/xctf-misc-wp/" title="xctf-misc-wp">https://rock718.github.io.git/2020/05/01/xctf-misc-wp/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
